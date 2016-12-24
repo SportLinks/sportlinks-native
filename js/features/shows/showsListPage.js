@@ -21,7 +21,7 @@ class ShowsList extends Component {
     return (
       <TouchableOpacity key={rowID}
         onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, paddingTop: 10}} >
+        <View style={{flex: 1, paddingTop: 10, paddingBottom: 5}} >
           <Text style={styles.titleText}>{rowData.description}</Text>
           <Text style={styles.baseText}>{dateFormat(rowData.startDate + '+01:00', "dd/mm HH:MM")} - {rowData.category}</Text>
         </View>
@@ -58,7 +58,7 @@ class ShowsList extends Component {
               }
             />
           </View>
-          
+
       </Container>
     )
   }

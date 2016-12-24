@@ -43,7 +43,6 @@ class ShowsList extends Component {
           </Button>
         </Header>
 
-        <Content padder>
           <Text style={{textAlign: 'right'}}>Update at {this.props.receivedAt}</Text>
           <View style={{flex: 1, paddingTop: 0, paddingLeft: 10}}>
             <ListView
@@ -59,8 +58,7 @@ class ShowsList extends Component {
               }
             />
           </View>
-        </Content>
-
+          
       </Container>
     )
   }

@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import myTheme from '../../themes/base-theme'
 import {View, Text, StyleSheet, Linking, TouchableOpacity} from 'react-native'
 import { Container, Header, Title, Content, H3, Button, Icon, Card, CardItem } from 'native-base'
-import navigateTo from '../../reducers/navigation'
+import {navigateTo} from '../../reducers/navigation'
 import HTMLView from 'react-native-htmlview'
 
 var htmlContent = '<p><a href="http://jsdf.co">&hearts nice job!</a></p>'

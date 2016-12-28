@@ -1,20 +1,24 @@
 {
   "name": "sportlinks-native",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "ios": "react-native run-ios",
-    "android": "react-native run-android"
+    "build-ios": "react-native run-ios",
+    "build-android": "react-native run-android",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --sourcemap-output android/app/src/main/assets/index.android.map --assets-dest android/app/src/main/res/",
+    "assemble-android": "(cd android/ && ./gradlew assembleRelease)"
   },
   "dependencies": {
     "axios": "^0.15.3",
     "dateformat": "^2.0.0",
+    "firebase": "^3.6.4",
     "native-base": "^0.5.18",
     "react": "15.4.1",
     "react-native": "^0.38.0",
     "react-native-code-push": "^1.16.1-beta",
+    "react-native-google-signin": "^0.8.1",
     "react-native-htmlview": "^0.5.0",
     "react-native-modalbox": "^1.3.8",
     "react-native-navigation-redux-helpers": "^0.5.0",

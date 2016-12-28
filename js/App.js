@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import { StyleSheet } from 'react-native'
 import CodePush from 'react-native-code-push'
-
 import { Container, Content, Text, View } from 'native-base'
 import Modal from 'react-native-modalbox'
-
 import AppNavigator from './AppNavigator'
 import ProgressBar from './components/loaders/ProgressBar'
-
 import theme from './themes/base-theme'
+import {configureGoogleSignIn} from './features/login/services/authService'
+import {userAuthAction} from './features/login/reducers/user'
 
 const styles = StyleSheet.create({
   container: {
@@ -37,6 +37,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    // Configure google sign in and get user
+    configureGoogleSignIn().then(() => {
+      this.props.userAuthAction();
+    })
+
     CodePush.sync({ updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE },
       (status) => {
         switch (status) {
@@ -95,4 +101,8 @@ class App extends Component {
   }
 }
 
-export default App
+const bindAction = dispatch => ({
+  userAuthAction: () => dispatch(userAuthAction()),
+})
+
+export default connect(null, bindAction)(App)

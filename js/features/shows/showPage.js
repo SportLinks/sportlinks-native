@@ -8,7 +8,6 @@ import {navigateTo} from '../../reducers/navigation'
 
 openUrl = (url) => {
   return () => {
-    console.log('url: ', url)
     Linking.canOpenURL(url).then(supported => {
       if (!supported) {
         console.log('Can\'t handle url: ' + url)
@@ -48,10 +47,8 @@ class ShowDetail extends Component {
               {
                 this.props.show.streamings.map(function(streaming, index) {
                   return (
-                  <CardItem key={index}>
+                  <CardItem key={index} onPress={openUrl(streaming.urlAcestream)}>
                     <Icon name="ios-play" style={{ color: '#000000', paddingTop: 10}} />
-                    <TouchableOpacity
-                      onPress={openUrl(streaming.urlAcestream)}>
                       <View style={{paddingTop: 5, paddingBottom: 10}}>
                         <Text style={styles.titleText}>
                           {streaming.name}
@@ -60,7 +57,6 @@ class ShowDetail extends Component {
                           {streaming.type} -- {streaming.kbps} kbps
                         </Text>
                       </View>
-                    </TouchableOpacity>
                   </CardItem>
                   )
                 })

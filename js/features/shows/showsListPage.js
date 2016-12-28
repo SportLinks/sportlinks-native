@@ -43,7 +43,6 @@ class ShowsList extends Component {
           </Button>
         </Header>
 
-          <Text style={{textAlign: 'right'}}>Update at {this.props.receivedAt}</Text>
           <View style={{flex: 1, paddingTop: 0, paddingLeft: 10}}>
             <ListView
               dataSource={ds.cloneWithRows(this.props.shows)}
@@ -54,6 +53,7 @@ class ShowsList extends Component {
                 <RefreshControl
                   refreshing={this.props.loading}
                   onRefresh={this._onRefresh.bind(this)}
+                  colors={['blue', 'yellow', 'red']}
                 />
               }
             />
@@ -91,7 +91,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(navigateTo('showDetail', 'home'))
     },
     openDrawer: () => dispatch(openDrawer()),
-    refreshShowList: () => dispatch(fetchShowsAction('1'))
+    refreshShowList: () => dispatch(fetchShowsAction('1')),
   }
 }
 

@@ -13,10 +13,13 @@ export function navigateTo(route, homeRoute) {
   return (dispatch, getState) => {
     const navigation = getState().cardNavigation
     const currentRouteKey = navigation.routes[navigation.routes.length - 1].key
+    if (navigation.routes[0].key === 'home')  homeRoute = 'home'
 
     dispatch(closeDrawer())
 
-    if (currentRouteKey !== homeRoute && route !== homeRoute) {
+    if (!homeRoute) {
+      dispatch(replaceAt(currentRouteKey, { key: route, index: 0 }, navigation.key))
+    } else if (currentRouteKey !== homeRoute && route !== homeRoute) {
       dispatch(replaceAt(currentRouteKey, { key: route, index: 1 }, navigation.key))
     } else if (currentRouteKey !== homeRoute && route === homeRoute) {
       dispatch(popRoute(navigation.key))
@@ -31,7 +34,7 @@ const initialState = {
   index: 0,
   routes: [
     {
-      key: 'home',
+      key: 'login',
       index: 0,
     },
   ],

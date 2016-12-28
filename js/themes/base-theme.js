@@ -4,11 +4,11 @@ import {Platform} from 'react-native'
 
 export default {
 
-    // Badge
+  // Badge
   badgeBg: '#ED1727',
   badgeColor: '#fff',
 
-    // Button
+  // Button
   btnFontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto_medium',
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
@@ -66,16 +66,13 @@ export default {
     return this.iconFontSize * 0.6
   },
 
-
     // Card
   cardDefaultBg: '#fff',
-
 
   // Check Box
   checkboxBgColor: '#039BE5',
   checkboxSize: 23,
   checkboxTickColor: '#fff',
-
 
   // Color
   brandPrimary: '#5067FF',
@@ -84,7 +81,6 @@ export default {
   brandDanger: '#d9534f',
   brandWarning: '#f0ad4e',
   brandSidebar: '#252932',
-
 
   // Font
   fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto',
@@ -99,7 +95,6 @@ export default {
   get fontSizeH3() {
     return this.fontSizeBase * 1.4
   },
-
 
   // Footer
   footerHeight: 55,
@@ -122,12 +117,10 @@ export default {
     return color(this.toolbarDefaultBg).darken(0.2).hexString()
   },
 
-
   // Icon
   iconFamily: 'Ionicons',
   iconFontSize: (Platform.OS === 'ios') ? 30 : 28,
   iconMargin: 7,
-
 
   // InputGroup
   inputFontSize: 15,
@@ -150,7 +143,6 @@ export default {
     return this.inputPaddingLeft * 8
   },
 
-
   // Line Height
   btnLineHeight: 19,
   lineHeightH1: 32,
@@ -158,7 +150,6 @@ export default {
   lineHeightH3: (Platform.OS === 'ios') ? 22 : 25,
   iconLineHeight: (Platform.OS === 'ios') ? 37 : 30,
   lineHeight: (Platform.OS === 'ios') ? 20 : 24,
-
 
   // List
   listBorderColor: '#ddd',
@@ -168,11 +159,9 @@ export default {
   listNoteColor: '#808080',
   listNoteSize: 13,
 
-
   // Progress Bar
   defaultProgressColor: '#E4202D',
   inverseProgressColor: '#1A191B',
-
 
   // Radio Button
   radioBtnSize: (Platform.OS === 'ios') ? 25 : 23,
@@ -182,11 +171,9 @@ export default {
     return color(this.radioColor).darken(0.2).hexString()
   },
 
-
   // Spinner
   defaultSpinnerColor: '#45D56E',
   inverseSpinnerColor: '#1A191B',
-
 
   // Tabs
   // tabBgColor: '#F8F8F8',
@@ -196,17 +183,14 @@ export default {
   tabFontSize: 15,
   tabTextColor: (Platform.OS === 'ios') ? '#007aff' : '#fff',
 
-
   // Text
   textColor: '#000',
   inverseTextColor: '#fff',
-
 
   // Title
   titleFontSize: (Platform.OS === 'ios') ? 17 : 19,
   subTitleFontSize: (Platform.OS === 'ios') ? 12 : 14,
   subtitleColor: '#8e8e93',
-
 
   // Other
   borderRadiusBase: (Platform.OS === 'ios') ? 5 : 2,

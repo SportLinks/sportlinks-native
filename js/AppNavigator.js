@@ -5,11 +5,12 @@ import {connect} from 'react-redux'
 import {Drawer} from 'native-base'
 import {actions} from 'react-native-navigation-redux-helpers'
 import {closeDrawer, openDrawer} from './reducers/drawer'
-import SideBar from './components/sidebar'
+import SideBar from './features/sidebar'
 import ShowsList from './features/shows/showsListPage'
 import ShowDetail from './features/shows/showPage'
-import statusBarColor from './themes/base-theme'
 import HelpPage from './features/help'
+import LoginPage from './features/login'
+import statusBarColor from './themes/base-theme'
 
 const {
   popRoute
@@ -36,7 +37,13 @@ class AppNavigator extends Component {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       const routes = this.props.navigation.routes
 
-      if (routes[routes.length - 1].key === 'home') {
+      if (this.props.drawerState === 'opened') {
+        this.closeDrawer()
+        return true
+      }
+
+      if ((routes[routes.length - 1].key === 'home') ||
+          (routes[routes.length - 1].key === 'login')) {
         return false
       }
 
@@ -71,6 +78,8 @@ class AppNavigator extends Component {
 
   _renderScene(props) { // eslint-disable-line class-methods-use-this
     switch (props.scene.route.key) {
+      case 'login':
+        return <LoginPage />
       case 'home':
         return <ShowsList />
       case 'showDetail':
@@ -112,6 +121,7 @@ class AppNavigator extends Component {
           }
         }}
         negotiatePan
+        disabled={this.props.drawerDisabled}
       >
         <StatusBar
           backgroundColor={statusBarColor.statusBarColor}
@@ -121,6 +131,7 @@ class AppNavigator extends Component {
           navigationState={this.props.navigation}
           renderOverlay={this._renderOverlay}
           renderScene={this._renderScene}
+          enableGestures={false}
         />
       </Drawer>
     )
@@ -135,7 +146,8 @@ const bindAction = dispatch => ({
 
 const mapStateToProps = state => ({
   drawerState: state.drawer.drawerState,
-  navigation: state.cardNavigation
+  drawerDisabled: state.drawer.drawerDisabled,
+  navigation: state.cardNavigation,
 })
 
 export default connect(mapStateToProps, bindAction)(AppNavigator)

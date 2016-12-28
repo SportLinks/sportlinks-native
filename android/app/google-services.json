@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "631365010339",
+    "firebase_url": "https://sportlinks-997d1.firebaseio.com",
+    "project_id": "sportlinks-997d1",
+    "storage_bucket": "sportlinks-997d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631365010339:android:355aecf16962a403",
+        "android_client_info": {
+          "package_name": "com.sportlinks_native"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631365010339-26cr7grpcr09hdoojina0do9agi5isp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sportlinks_native",
+            "certificate_hash": "38B5C6AF32BE8ACC1CBBF78FE52D2836F07660D3"
+          }
+        },
+        {
+          "client_id": "631365010339-rtlubtpc2a2jdcmo4s19hk0c736ecj4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxwGtQ5Vby7O-osEQ_CEWEongwN0G1Krk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631365010339-rtlubtpc2a2jdcmo4s19hk0c736ecj4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,18 +4,26 @@ import myTheme from '../../themes/base-theme'
 import {View, Text, StyleSheet, Linking, TouchableOpacity} from 'react-native'
 import { Container, Header, Title, Content, H3, Button, Icon, Card, CardItem } from 'native-base'
 import {navigateTo} from '../../reducers/navigation'
-import HTMLView from 'react-native-htmlview'
-
-var htmlContent = '<p><a href="http://jsdf.co">&hearts nice job!</a></p>'
 
 class HelpPage extends Component {
   constructor(props) {
     super(props)
   }
 
+  renderButton(text, url) {
+    return (
+      <View style={{paddingBottom: 10, paddingTop: 5}}>
+        <Button block info
+          onPress={() => Linking.openURL(url)}>
+          {text}
+        </Button>
+      </View>
+    )
+  }
+
   render() {
     return (
-      <Container theme={myTheme} style={styles.container}>
+      <Container>
 
         <Header>
           <Title>Help</Title>
@@ -33,11 +41,9 @@ class HelpPage extends Component {
             <Text style={styles.titleText}>
               Following are useful toolkits for displaying, as a test, the links of the application:
             </Text>
-
-            <HTMLView
-              value={'<ul><li><b>Acestream: </b> <a href="https://play.google.com/store/apps/details?id=org.acestream.media&hl=es">Google Play</a></li><br/><li><b>SopCast: </b> <a href="http://download.sopcast.com/download/SopCast.apk">Web SopCast</a></li><br/><li><b>Reproductor MX: </b> <a href="https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad&hl=es">Google Play</a></li></ul>'}
-              onLinkPress={(url) => Linking.openURL(url)}
-            />
+            {this.renderButton('Acestream (Google Play)', 'https://play.google.com/store/apps/details?id=org.acestream.media&hl=es')}
+            {this.renderButton('Reproductor MX (Google Play)', 'https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad&hl=es')}
+            {this.renderButton('SopCast (Web Site)', 'http://download.sopcast.com/download/SopCast.apk')}
           </View>
         </Content>
 

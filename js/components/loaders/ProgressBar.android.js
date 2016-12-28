@@ -34,7 +34,6 @@ export default class SpinnerNB extends NativeBaseComponent {
       <ProgressBar
         {...this.prepareRootProps()}
         styleAttr="Horizontal"
-        indeterminate={false}
         progress={this.props.progress ? this.props.progress / 100 : 0.5}
         color={getColor()}
       />

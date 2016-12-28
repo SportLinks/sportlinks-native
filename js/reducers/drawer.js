@@ -1,6 +1,8 @@
 
 const OPEN_DRAWER = 'OPEN_DRAWER'
 const CLOSE_DRAWER = 'CLOSE_DRAWER'
+const DISABLE_DRAWER = 'DISABLE_DRAWER'
+const ENABLE_DRAWER = 'ENABLE_DRAWER'
 
 export function openDrawer() {
   return {
@@ -13,14 +15,27 @@ export function closeDrawer() {
     type: CLOSE_DRAWER,
   }
 }
-export type State = {
+
+export function disableDrawer() {
+  return {
+    type: DISABLE_DRAWER,
+  }
+}
+
+export function enableDrawer() {
+  return {
+    type: ENABLE_DRAWER,
+  }
+}
+
+type State = {
     drawerState: string,
     drawerDisabled: boolean
 }
 
 const initialState = {
   drawerState: 'closed',
-  drawerDisabled: false,
+  drawerDisabled: true,
 }
 
 export default function (state:State = initialState, action): State {
@@ -35,6 +50,20 @@ export default function (state:State = initialState, action): State {
     return {
       ...state,
       drawerState: 'closed',
+    }
+  }
+
+  if (action.type === DISABLE_DRAWER) {
+    return {
+      ...state,
+      drawerDisabled: true,
+    }
+  }
+
+  if (action.type === ENABLE_DRAWER) {
+    return {
+      ...state,
+      drawerDisabled: false,
     }
   }
 

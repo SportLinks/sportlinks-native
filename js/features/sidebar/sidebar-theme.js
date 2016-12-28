@@ -11,7 +11,6 @@ export default {
   iconLineHeight: (Platform.OS === 'ios') ? 37 : 30,
   lineHeight: (Platform.OS === 'ios') ? 20 : 24,
 
-
   // List
   listBorderColor: '#fff',
   listDividerBg: '#ddd',

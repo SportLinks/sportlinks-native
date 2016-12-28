@@ -46,6 +46,10 @@
 		1A0DA06685A643F4A9C4A67F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD9E55E40DF14FC1B36F2C9F /* Zocial.ttf */; };
 		DACACDA4D4934A84A99E694B /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C092D43509BA472E893FDAF0 /* libCodePush.a */; };
 		A7B4B5DDFF4C4F2291818C0F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4D4ADF63C24C8DB0607D9B /* libz.tbd */; };
+		BB390FE1752844589BE86121 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB297192B01840108127DE11 /* libRNGoogleSignin.a */; };
+		31EE7001598A4BC2BA3A2CBA /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761FB6C2B1EC4338A3C7DC44 /* SafariServices.framework */; };
+		DB733366A317467B869DAD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB0F34A18964668A9F38773 /* SystemConfiguration.framework */; };
+		AD8AE74846094B689E743CBB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708ADF21AD8A449FA6A778DC /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +194,11 @@
 		1F34E9DEC85A4A64906887FA /* CodePush.xcodeproj */ = {isa = PBXFileReference; name = "CodePush.xcodeproj"; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		C092D43509BA472E893FDAF0 /* libCodePush.a */ = {isa = PBXFileReference; name = "libCodePush.a"; path = "libCodePush.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0F4D4ADF63C24C8DB0607D9B /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		A0BECA903E94474CAFE0AC03 /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; name = "RNGoogleSignin.xcodeproj"; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		BB297192B01840108127DE11 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		761FB6C2B1EC4338A3C7DC44 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		ECB0F34A18964668A9F38773 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		708ADF21AD8A449FA6A778DC /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +228,10 @@
 				B56FE128C5F6425EA0EFDE4B /* libRNVectorIcons.a in Frameworks */,
 				DACACDA4D4934A84A99E694B /* libCodePush.a in Frameworks */,
 				A7B4B5DDFF4C4F2291818C0F /* libz.tbd in Frameworks */,
+				BB390FE1752844589BE86121 /* libRNGoogleSignin.a in Frameworks */,
+				31EE7001598A4BC2BA3A2CBA /* SafariServices.framework in Frameworks */,
+				DB733366A317467B869DAD06 /* SystemConfiguration.framework in Frameworks */,
+				AD8AE74846094B689E743CBB /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +366,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				FA9219748D5547188EDA7193 /* RNVectorIcons.xcodeproj */,
 				1F34E9DEC85A4A64906887FA /* CodePush.xcodeproj */,
+				A0BECA903E94474CAFE0AC03 /* RNGoogleSignin.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -392,6 +406,9 @@
 			isa = PBXGroup;
 			children = (
 				0F4D4ADF63C24C8DB0607D9B /* libz.tbd */,
+				761FB6C2B1EC4338A3C7DC44 /* SafariServices.framework */,
+				ECB0F34A18964668A9F38773 /* SystemConfiguration.framework */,
+				708ADF21AD8A449FA6A778DC /* AddressBook.framework */,
 			);
 			name = Frameworks;
 			path = "";
@@ -744,6 +761,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -760,6 +778,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sportlinks_native.app/sportlinks_native";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -840,6 +859,7 @@
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -882,6 +902,7 @@
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

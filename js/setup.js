@@ -9,8 +9,7 @@ function setup():React.Component {
     constructor() {
       super()
       this.state = {
-        isLoading: true,
-        store: configureStore(() => this.setState({ isLoading: false })),
+        store: configureStore()
       }
     }
 

@@ -70,9 +70,14 @@ function singIn(dispatch) {
     })
 }
 
+const mapStateToProps = state => ({
+  user: state.user,
+})
+
 const bindAction = dispatch => ({
   singIn: () => singIn(dispatch),
   navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
+  enableDrawer: () => dispatch(enableDrawer()),
 })
 
-export default connect(null, bindAction)(LoginPage)
+export default connect(mapStateToProps, bindAction)(LoginPage)

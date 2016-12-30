@@ -2,25 +2,31 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import dateFormat from 'dateformat'
 import myTheme from '../../themes/base-theme'
-import {View, Text, StyleSheet, Linking, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, Linking, TouchableOpacity, Alert} from 'react-native'
 import {Container, Header, Title, Content, Button, Icon, Card, CardItem} from 'native-base'
 import {navigateTo} from '../../reducers/navigation'
-
-openUrl = (url) => {
-  return () => {
-    Linking.canOpenURL(url).then(supported => {
-      if (!supported) {
-        console.log('Can\'t handle url: ' + url)
-      } else {
-        return Linking.openURL(url)
-      }
-    }).catch(err => console.error('An error occurred', err))
-  }
-}
 
 class ShowDetail extends Component {
   constructor(props) {
     super(props)
+  }
+
+  openUrl(url) {
+    return () => {
+      Linking.canOpenURL(url).then(supported => {
+        if (!supported) {
+          Alert.alert(
+            'Info',
+            'To test the links you need install the apps that are shown in the help page.',
+            [
+              {text: 'OK', onPress: () => this.props.navigateTo("help", "home")},
+            ],
+          )
+        } else {
+          return Linking.openURL(url)
+        }
+      }).catch(err => console.error('An error occurred', err))
+    }
   }
 
   renderIcon = (sport) => {
@@ -57,17 +63,17 @@ class ShowDetail extends Component {
                   <View style={{flex: 1, flexDirection: 'row', paddingTop: 10}} >
                     {this.renderIcon(this.props.show.sport)}
                     <View style={{flex: 1, paddingLeft: 15}} >
-                      <Text style={styles.titleSection}>{this.props.show.event}</Text>
+                      <Text style={styles.titleText}>{this.props.show.event}</Text>
                       <Text style={styles.baseText}>{this.props.show.sport} - {this.props.show.competition}</Text>
                       <Text style={styles.baseText}>{this.props.show.date} {this.props.show.hour}</Text>
                     </View>
                   </View>
                 </CardItem>
               {
-                this.props.show.channels.map(function(channel, index) {
+                this.props.show.channels.map((channel, index) => {
                   return (
-                  <CardItem key={index} onPress={openUrl(channel.url)}>
-                    <Icon name="ios-play" style={{ color: '#000000', paddingTop: 10}} />
+                  <CardItem key={index} onPress={this.openUrl(channel.url)}>
+                    <Icon name="ios-play" style={{ color: '#000000', paddingTop: 9}} />
                       <View style={{paddingTop: 13, paddingBottom: 10}}>
                         <Text style={styles.titleText}>
                           Link {index + 1} ({channel.language})
@@ -92,8 +98,11 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   titleText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'bold'
+  },
+  baseText: {
+    fontSize: 12
   },
   titleSection: {
     fontSize: 14,
@@ -103,7 +112,8 @@ const styles = StyleSheet.create({
   },
   bigSportIcon: {
     color: '#000000',
-    paddingTop: 2,
+    paddingTop: -5,
+    paddingLeft: 5,
     fontSize: 60,
   }
 })

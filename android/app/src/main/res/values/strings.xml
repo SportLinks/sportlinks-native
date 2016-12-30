@@ -1,4 +1,4 @@
 <resources>
     <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">AgYvjZPFwOuCI9A29hrwuw3OgRwxVJrezTC7M</string>
-    <string name="app_name">Sport Links</string>
+    <string name="app_name">Sports Links</string>
 </resources>

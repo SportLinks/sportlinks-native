@@ -36,9 +36,9 @@ class ShowsList extends Component {
     return (
       <TouchableOpacity key={rowID}
         onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, flexDirection: 'row', paddingTop: 10}} >
+        <View style={{flex: 1, flexDirection: 'row', paddingTop: 8}} >
           {this.renderIcon(rowData.sport)}
-          <View style={{flex: 1, paddingLeft: 10, paddingTop: 5, paddingBottom: 5}} >
+          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 9}} >
             <Text style={styles.titleText}>{rowData.event}</Text>
             <Text style={styles.baseText}>{rowData.date} {rowData.hour} - {rowData.competition}</Text>
           </View>
@@ -61,17 +61,18 @@ class ShowsList extends Component {
           </Button>
         </Header>
 
-          <View style={{flex: 1, paddingTop: 0, paddingLeft: 10}}>
+          <View style={{flex: 1, paddingTop: 0, paddingLeft: 10, marginRight: 10}}>
             <ListView
               dataSource={ds.cloneWithRows(this.props.shows)}
               keyboardShouldPersistTaps={true}
               renderRow={this.renderRow}
               enableEmptySections={true}
+              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
               refreshControl={
                 <RefreshControl
                   refreshing={this.props.loading}
                   onRefresh={this._onRefresh.bind(this)}
-                  colors={['blue', 'yellow', 'red']}
+                  colors={['blue', 'green', 'red']}
                 />
               }
             />
@@ -84,17 +85,22 @@ class ShowsList extends Component {
 
 const styles = StyleSheet.create({
   titleText: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold'
   },
   baseText: {
-    fontSize: 14
+    fontSize: 13,
   },
   litleSportIcon: {
     color: '#000000',
-    paddingTop: 8,
-    fontSize: 35,
-  }
+    paddingTop: 2,
+    fontSize: 34,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#8E8E8E',
+  },
 })
 
 function mapStateToProps(state) {

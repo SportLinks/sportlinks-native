@@ -1,1 +1,1 @@
-Native version of SportLinks using Reac-Native framework.
+Native version of SportsLinks using Reac Native framework.

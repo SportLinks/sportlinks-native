@@ -35,15 +35,14 @@ class HelpPage extends Component {
         <Content padder>
           <View>
             <Text style={styles.titleText}>
-              This application is not for profit and is part of a proof of concept of a Progressive Web App.
-              The texts and links of sporting events shown in the application are collected from public webs.
+              This application is <Text style={{fontWeight: 'bold'}}>not for profit</Text> and is part of a proof of concept of a React Native App.
+              The texts and links of sporting events that are shown by the application are collected from public webs.
             </Text>
             <Text style={styles.titleText}>
-              Following are useful toolkits for displaying, as a test, the links of the application:
+              Following are some useful toolkits for displaying, only for test purposes, the links of the application:
             </Text>
             {this.renderButton('Acestream (Google Play)', 'https://play.google.com/store/apps/details?id=org.acestream.media&hl=es')}
             {this.renderButton('Reproductor MX (Google Play)', 'https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad&hl=es')}
-            {this.renderButton('SopCast (Web Site)', 'http://download.sopcast.com/download/SopCast.apk')}
           </View>
         </Content>
 

@@ -16,11 +16,11 @@ export default function configureStore(onCompletion:()=>void):any {
       applyMiddleware(thunk/*, logger*/)
     )
 
-  const store = createStore(reducer, enhancer/*, autoRehydrate()*/)
+  const store = createStore(reducer, enhancer, autoRehydrate())
 
-  /*persistStore(store, {blacklist: ['drawer'], storage: AsyncStorage}, () => {
+  persistStore(store, {whitelist: ['user'], storage: AsyncStorage}, () => {
     console.log('rehydration complete')
-  })*/
+  })
 
   store.dispatch(fetchShowsAction())
 

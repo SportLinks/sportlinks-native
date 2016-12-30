@@ -31,14 +31,11 @@ class LoginPage extends Component {
         })
         this.props.navigateTo('login')
       }
-    }, 1000);
+    }, 500);
   }
 
-  handleSingIn() {
-    this.setState({
-      login: false,
-    })
-    this.props.singIn()
+  handleSignIn() {
+    this.props.signIn()
   }
 
   render() {
@@ -50,7 +47,7 @@ class LoginPage extends Component {
             style={{width: 312, height: 48}}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
-            onPress={() => this.handleSingIn()}
+            onPress={() => this.handleSignIn()}
           />
         </View> : <View/>}
       </Image>
@@ -58,12 +55,12 @@ class LoginPage extends Component {
   }
 }
 
-function singIn(dispatch) {
+function signIn(dispatch) {
   login().then(
     (user) => {
       dispatch(receiveLoginAction(user))
       dispatch(enableDrawer())
-      dispatch(navigateTo('home'))
+      dispatch(navigateTo('help'))
     },
     (error) => {
       console.log(error)
@@ -75,7 +72,7 @@ const mapStateToProps = state => ({
 })
 
 const bindAction = dispatch => ({
-  singIn: () => singIn(dispatch),
+  signIn: () => signIn(dispatch),
   navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
   enableDrawer: () => dispatch(enableDrawer()),
 })

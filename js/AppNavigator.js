@@ -67,12 +67,12 @@ class AppNavigator extends Component {
   }
 
   openDrawer() {
-    setTimeout(() => this.props.openDrawer(), 150)
+    setTimeout(() => this.props.openDrawer(), 50)
   }
 
   closeDrawer() {
     if (this.props.drawerState === 'opened') {
-      setTimeout(() => this.props.closeDrawer(), 150)
+      setTimeout(() => this.props.closeDrawer(), 50)
     }
   }
 

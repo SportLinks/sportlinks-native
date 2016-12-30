@@ -23,6 +23,21 @@ class ShowDetail extends Component {
     super(props)
   }
 
+  renderIcon = (sport) => {
+    switch (sport.toUpperCase()) {
+      case 'SOCCER':
+        return <Icon name="ios-football" style={styles.bigSportIcon} />
+      case 'BASKETBALL':
+        return <Icon name="ios-basketball" style={styles.bigSportIcon} />
+      case 'TENNIS':
+        return <Icon name="ios-tennisball" style={styles.bigSportIcon} />
+      case 'FOOTBALL':
+        return <Icon name="ios-american-football" style={styles.bigSportIcon} />
+      default:
+        return <Icon name="ios-videocam" style={styles.bigSportIcon} />
+    }
+  }
+
   render() {
     return (
       <Container theme={myTheme} style={styles.container}>
@@ -39,22 +54,23 @@ class ShowDetail extends Component {
             <View style={{flex: 4, paddingTop: 0, paddingLeft: 0}}>
               <Card>
                 <CardItem >
-                  <View style={{flex: 1, paddingTop: 10}} >
-                    <Text style={styles.titleSection}>{this.props.show.description}</Text>
-                    <Text style={styles.baseText}>{dateFormat(this.props.show.startDate + '+01:00', "dd/mm HH:MM")} - {this.props.show.category}</Text>
+                  <View style={{flex: 1, flexDirection: 'row', paddingTop: 10}} >
+                    {this.renderIcon(this.props.show.sport)}
+                    <View style={{flex: 1, paddingLeft: 15}} >
+                      <Text style={styles.titleSection}>{this.props.show.event}</Text>
+                      <Text style={styles.baseText}>{this.props.show.sport} - {this.props.show.competition}</Text>
+                      <Text style={styles.baseText}>{this.props.show.date} {this.props.show.hour}</Text>
+                    </View>
                   </View>
                 </CardItem>
               {
-                this.props.show.streamings.map(function(streaming, index) {
+                this.props.show.channels.map(function(channel, index) {
                   return (
-                  <CardItem key={index} onPress={openUrl(streaming.urlAcestream)}>
+                  <CardItem key={index} onPress={openUrl(channel.url)}>
                     <Icon name="ios-play" style={{ color: '#000000', paddingTop: 10}} />
-                      <View style={{paddingTop: 5, paddingBottom: 10}}>
+                      <View style={{paddingTop: 13, paddingBottom: 10}}>
                         <Text style={styles.titleText}>
-                          {streaming.name}
-                        </Text>
-                        <Text>
-                          {streaming.type} -- {streaming.kbps} kbps
+                          Link {index + 1} ({channel.language})
                         </Text>
                       </View>
                   </CardItem>
@@ -83,7 +99,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     paddingBottom: 5,
-    color: 'black'
+    color: 'black',
+  },
+  bigSportIcon: {
+    color: '#000000',
+    paddingTop: 2,
+    fontSize: 60,
   }
 })
 

@@ -3,6 +3,8 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducer from './reducers'
 import {fetchShowsAction} from './features/shows/reducers/shows'
+import {persistStore, autoRehydrate} from 'redux-persist'
+import {AsyncStorage} from 'react-native'
 
 export default function configureStore(onCompletion:()=>void):any {
   const logger = createLogger({
@@ -11,12 +13,16 @@ export default function configureStore(onCompletion:()=>void):any {
   })
 
   const enhancer = compose(
-      applyMiddleware(thunk, logger)
+      applyMiddleware(thunk/*, logger*/)
     )
 
-  const store = createStore(reducer, enhancer)
+  const store = createStore(reducer, enhancer/*, autoRehydrate()*/)
 
-  store.dispatch(fetchShowsAction('1'))
+  /*persistStore(store, {blacklist: ['drawer'], storage: AsyncStorage}, () => {
+    console.log('rehydration complete')
+  })*/
+
+  store.dispatch(fetchShowsAction())
 
   return store
 }

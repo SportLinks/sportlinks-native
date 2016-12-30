@@ -17,13 +17,31 @@ class ShowsList extends Component {
     this.props.refreshShowList()
   }
 
+  renderIcon = (sport) => {
+    switch (sport.toUpperCase()) {
+      case 'SOCCER':
+        return <Icon name="ios-football" style={styles.litleSportIcon} />
+      case 'BASKETBALL':
+        return <Icon name="ios-basketball" style={styles.litleSportIcon} />
+      case 'TENNIS':
+        return <Icon name="ios-tennisball" style={styles.litleSportIcon} />
+      case 'FOOTBALL':
+        return <Icon name="ios-american-football" style={styles.litleSportIcon} />
+      default:
+        return <Icon name="ios-videocam" style={styles.litleSportIcon} />
+    }
+  }
+
   renderRow = (rowData, sectionID, rowID, highlightRow) => {
     return (
       <TouchableOpacity key={rowID}
         onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, paddingTop: 10, paddingBottom: 5}} >
-          <Text style={styles.titleText}>{rowData.description}</Text>
-          <Text style={styles.baseText}>{dateFormat(rowData.startDate + '+01:00', "dd/mm HH:MM")} - {rowData.category}</Text>
+        <View style={{flex: 1, flexDirection: 'row', paddingTop: 10}} >
+          {this.renderIcon(rowData.sport)}
+          <View style={{flex: 1, paddingLeft: 10, paddingTop: 5, paddingBottom: 5}} >
+            <Text style={styles.titleText}>{rowData.event}</Text>
+            <Text style={styles.baseText}>{rowData.date} {rowData.hour} - {rowData.competition}</Text>
+          </View>
         </View>
       </TouchableOpacity>
     )
@@ -71,6 +89,11 @@ const styles = StyleSheet.create({
   },
   baseText: {
     fontSize: 14
+  },
+  litleSportIcon: {
+    color: '#000000',
+    paddingTop: 8,
+    fontSize: 35,
   }
 })
 

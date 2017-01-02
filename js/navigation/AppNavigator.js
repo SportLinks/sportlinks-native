@@ -118,7 +118,8 @@ class AppNavigator extends Component {
           drawerPosition={DrawerLayoutAndroid.positions.Left}
           renderNavigationView={() => <SideBar/>}
           onDrawerClose={() => this.closeDrawer()}
-          onDrawerOpen={() => this.openDrawer()}>
+          onDrawerOpen={() => this.openDrawer()}
+          drawerLockMode={(this.props.drawerDisabled ? 'locked-closed' : 'unlocked')}>
           <StatusBar
             backgroundColor={statusBarColor.statusBarColor}
             translucent={true}

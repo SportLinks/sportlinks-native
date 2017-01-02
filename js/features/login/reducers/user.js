@@ -1,5 +1,4 @@
 import {getUser, logout} from '../services/authService'
-import {closeDrawer} from '../../../reducers/drawer'
 
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'

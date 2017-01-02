@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Provider} from 'react-redux'
 import App from './App'
-import configureStore from './configureStore'
+import configureStore from './store/configureStore'
 import SplashScreen from 'react-native-splash-screen'
 import {fetchShowsAction} from './features/shows/reducers/shows'
 import {Alert} from 'react-native'

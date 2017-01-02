@@ -63,8 +63,8 @@ class ShowDetail extends Component {
             <View style={{flex: 4, paddingTop: 0, paddingLeft: 0}}>
               <Card>
                 <CardItem >
-                  <View style={{flex: 1, flexDirection: 'row', paddingTop: 10}} >
-                    {this.renderIcon(this.props.show.sport)}
+                  <View style={{flex: 1, flexDirection: 'row', paddingLeft: -10, paddingTop: 10}} >
+                    {/*this.renderIcon(this.props.show.sport)*/}
                     <View style={{flex: 1, paddingLeft: 15}} >
                       <Text style={styles.titleText}>{this.props.show.event}</Text>
                       <Text style={styles.baseText}>{this.props.show.sport} - {this.props.show.competition}</Text>
@@ -103,11 +103,11 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   titleText: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: 'bold'
   },
   baseText: {
-    fontSize: 13
+    fontSize: 14
   },
   titleSection: {
     fontSize: 14,

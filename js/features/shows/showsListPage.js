@@ -38,11 +38,12 @@ class ShowsList extends Component {
     return (
       <TouchableOpacity key={rowID}
         onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, flexDirection: 'row', paddingLeft: 10, paddingTop: 14}} >
+        <View style={{flex: 1, flexDirection: 'row', paddingLeft: 5, paddingTop: 10}} >
           {this.renderIcon(rowData.sport)}
-          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 14}} >
+          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 10}} >
             <Text style={styles.titleText}>{rowData.event}</Text>
-            <Text style={styles.baseText}>{rowData.date} {rowData.hour} - {rowData.competition}</Text>
+            <Text style={styles.baseText}>{rowData.sport} - {rowData.competition}</Text>
+            <Text style={styles.baseText}>{rowData.date} {rowData.hour}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -64,7 +65,7 @@ class ShowsList extends Component {
         </Header>
 
           <View style={{flex: 1, backgroundColor: 'white'}}>
-            <ListView
+            <ListView style={{marginLeft: 3, marginRight: 3}}
               dataSource={ds.cloneWithRows(this.props.shows)}
               keyboardShouldPersistTaps={true}
               renderRow={this.renderRow}
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   },
   litleSportIcon: {
     color: '#000000',
-    paddingTop: 2,
+    paddingTop: 11,
     fontSize: 34,
   },
   separator: {

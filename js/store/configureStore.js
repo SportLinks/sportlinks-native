@@ -22,7 +22,7 @@ export default function configureStore() {
   const store = createStore(reducer, enhancer, autoRehydrate())
 
   return new Promise(function(resolve, reject) {
-    persistStore(store, {blacklist: [], storage: AsyncStorage}, () => {
+    persistStore(store, {blacklist: ['drawer'], storage: AsyncStorage}, () => {
       console.log('rehydration complete')
       resolve(store)
     })

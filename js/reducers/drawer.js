@@ -35,7 +35,7 @@ type State = {
 
 const initialState = {
   drawerState: 'closed',
-  drawerDisabled: true,
+  drawerDisabled: false,
 }
 
 export default function (state:State = initialState, action): State {

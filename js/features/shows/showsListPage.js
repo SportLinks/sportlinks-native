@@ -65,7 +65,7 @@ class ShowsList extends Component {
         </Header>
 
           <View style={{flex: 1, backgroundColor: 'white'}}>
-            <ListView style={{marginLeft: 3, marginRight: 3}}
+            <ListView style={{marginLeft: 0, marginRight: 0}}
               dataSource={ds.cloneWithRows(this.props.shows)}
               keyboardShouldPersistTaps={true}
               renderRow={this.renderRow}

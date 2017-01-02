@@ -13,6 +13,7 @@ export function navigateTo(route, homeRoute) {
   return (dispatch, getState) => {
     const navigation = getState().cardNavigation
     const currentRouteKey = navigation.routes[navigation.routes.length - 1].key
+
     if (navigation.routes[0].key === 'home')  homeRoute = 'home'
 
     dispatch(closeDrawer())

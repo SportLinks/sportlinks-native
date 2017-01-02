@@ -39,7 +39,7 @@ export const userLogOutAction = () =>
     })
   }
 
-export default function user(state = {}, action) {
+export default function user(state = {isLogin: false}, action) {
   switch (action.type) {
     case LOGIN:
     case LOGOUT:

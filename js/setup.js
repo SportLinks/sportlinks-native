@@ -6,10 +6,8 @@ import SplashScreen from 'react-native-splash-screen'
 import {fetchShowsAction} from './features/shows/reducers/shows'
 import {Alert} from 'react-native'
 import {configureGoogleSignIn} from './features/login/services/authService'
-import {receiveLoginAction} from './features/login/reducers/user'
-import {getUser} from './features/login/services/authService'
 import {navigateTo} from './reducers/navigation'
-import {enableDrawer, disableDrawer} from './reducers/drawer'
+import {disableDrawer} from './reducers/drawer'
 
 function setup():React.Component {
 
@@ -26,15 +24,11 @@ function setup():React.Component {
     async initialize() {
       try {
         const store = await configureStore()
-        const configGSI = await configureGoogleSignIn()
-        const user = await getUser()
+        await configureGoogleSignIn()
 
-        if (!user) {
+        if (!(store.getState().user.isLogin)) {
           store.dispatch(disableDrawer())
-          navigateTo('login', 'home')
-        } else {
-          store.dispatch(enableDrawer())
-          store.dispatch(receiveLoginAction(user))
+          store.dispatch(navigateTo('login', 'home'))
         }
 
         if (store.getState().shows.list.length === 0) {

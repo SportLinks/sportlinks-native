@@ -119,7 +119,7 @@ class AppNavigator extends Component {
           renderNavigationView={() => <SideBar/>}
           onDrawerClose={() => this.closeDrawer()}
           onDrawerOpen={() => this.openDrawer()}
-          drawerLockMode={(this.props.drawerDisabled ? 'locked-closed' : 'unlocked')}>
+          drawerLockMode={(this.props.drawerDisabled) ? 'locked-closed' : 'unlocked'}>
           <StatusBar
             backgroundColor={statusBarColor.statusBarColor}
             translucent={true}

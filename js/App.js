@@ -7,7 +7,6 @@ import Modal from 'react-native-modalbox'
 import AppNavigator from './navigation/AppNavigator'
 import ProgressBar from './components/loaders/ProgressBar'
 import theme from './themes/base-theme'
-import LoginPage from './features/login'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
   },
 })
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props)
@@ -98,16 +97,6 @@ class App extends Component {
       )
     }
 
-    if (!this.props.isLogin) {
-      return <LoginPage />
-    }
-
     return <AppNavigator />
   }
 }
-
-const mapStateToProps = state => ({
-  isLogin: (state.user.id !== undefined),
-})
-
-export default connect(mapStateToProps, null)(App)

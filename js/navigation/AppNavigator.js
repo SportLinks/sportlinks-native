@@ -1,8 +1,7 @@
 
 import React, {Component} from 'react'
-import {BackAndroid, StatusBar, NavigationExperimental} from 'react-native'
+import {BackAndroid, StatusBar, NavigationExperimental, DrawerLayoutAndroid} from 'react-native'
 import {connect} from 'react-redux'
-import {Drawer} from 'native-base'
 import {actions} from 'react-native-navigation-redux-helpers'
 import {closeDrawer, openDrawer} from '../reducers/drawer'
 import SideBar from '../features/sidebar'
@@ -67,11 +66,11 @@ class AppNavigator extends Component {
 
   componentDidUpdate() {
     if (this.props.drawerState === 'opened') {
-      this._drawer.open()
+      this._drawer.openDrawer()
     }
 
     if (this.props.drawerState === 'closed') {
-      this._drawer.close()
+      this._drawer.closeDrawer()
     }
   }
 
@@ -80,12 +79,12 @@ class AppNavigator extends Component {
   }
 
   openDrawer() {
-    setTimeout(() => this.props.openDrawer(), 50)
+    this.props.openDrawer()
   }
 
   closeDrawer() {
     if (this.props.drawerState === 'opened') {
-      setTimeout(() => this.props.closeDrawer(), 50)
+      this.props.closeDrawer()
     }
   }
 
@@ -111,37 +110,15 @@ class AppNavigator extends Component {
       crossFade: CrossFadeTransitioner,
     }
     const Transitioner = transitionMap[this.state.transition]
+
     return (
-        <Drawer
-          ref={(ref) => { this._drawer = ref}}
-          type="overlay"
-          tweenDuration={200}
-          content={<SideBar navigator={this._navigator} />}
-          tapToClose
-          acceptPan={false}
-          acceptTap={true}
-          onClose={() => this.closeDrawer()}
-          onOpen={() => this.openDrawer()}
-          openDrawerOffset={0.2}
-          panCloseMask={0.2}
-          styles={{
-            drawer: {
-              shadowColor: '#000000',
-              shadowOpacity: 0.8,
-              shadowRadius: 3,
-            },
-          }}
-          tweenHandler={(ratio) => {  // eslint-disable-line
-            return {
-              drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
-              main: {
-                opacity: (2 - ratio) / 2,
-              },
-            }
-          }}
-          negotiatePan
-          disabled={this.props.drawerDisabled}
-        >
+        <DrawerLayoutAndroid
+          ref={(drawer) => { this._drawer = drawer; }}
+          drawerWidth={300}
+          drawerPosition={DrawerLayoutAndroid.positions.Left}
+          renderNavigationView={() => <SideBar/>}
+          onDrawerClose={() => this.closeDrawer()}
+          onDrawerOpen={() => this.openDrawer()}>
           <StatusBar
             backgroundColor={statusBarColor.statusBarColor}
             translucent={true}
@@ -152,7 +129,7 @@ class AppNavigator extends Component {
             navigationState={this.props.navigation}
             enableGestures={false}
           />
-        </Drawer>
+        </DrawerLayoutAndroid>
     )
   }
 }

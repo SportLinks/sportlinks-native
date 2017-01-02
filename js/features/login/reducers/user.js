@@ -11,7 +11,8 @@ export const receiveLoginAction = ({id=undefined, name='', email='', photo=''} =
       id: id,
       name: name,
       email: email,
-      avatar: photo
+      avatar: photo,
+      isLogin: true,
     }
   })
 
@@ -28,10 +29,7 @@ const receiveLogoutAction = () =>
   ({
     type: LOGOUT,
     state: {
-      id:  undefined,
-      name: undefined,
-      email: undefined,
-      avatar: undefined
+      isLogin: false
     }
   })
 

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gray">#444440</color>
     <color name="white">#FFFFFF</color>
-    <color name="aliceblue">#f0f8ff</color>
 </resources>

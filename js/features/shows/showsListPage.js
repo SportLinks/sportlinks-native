@@ -27,6 +27,8 @@ class ShowsList extends Component {
         return <Icon name="ios-tennisball" style={styles.litleSportIcon} />
       case 'FOOTBALL':
         return <Icon name="ios-american-football" style={styles.litleSportIcon} />
+      case 'MMA':
+        return <Icon name="ios-body" style={styles.litleSportIcon} />
       default:
         return <Icon name="ios-videocam" style={styles.litleSportIcon} />
     }
@@ -36,9 +38,9 @@ class ShowsList extends Component {
     return (
       <TouchableOpacity key={rowID}
         onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, flexDirection: 'row', paddingTop: 8}} >
+        <View style={{flex: 1, flexDirection: 'row', paddingLeft: 10, paddingTop: 14}} >
           {this.renderIcon(rowData.sport)}
-          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 9}} >
+          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 14}} >
             <Text style={styles.titleText}>{rowData.event}</Text>
             <Text style={styles.baseText}>{rowData.date} {rowData.hour} - {rowData.competition}</Text>
           </View>
@@ -52,16 +54,16 @@ class ShowsList extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     })
     return (
-      <Container theme={myTheme} style={styles.container}>
+      <Container theme={myTheme}>
 
-        <Header>
+        <Header style={{paddingTop: 25}}>
           <Title>Sporting Shows</Title>
           <Button transparent onPress={this.props.openDrawer}>
             <Icon name="ios-menu" />
           </Button>
         </Header>
 
-          <View style={{flex: 1, paddingTop: 0, paddingLeft: 10, marginRight: 10}}>
+          <View style={{flex: 1, backgroundColor: 'white'}}>
             <ListView
               dataSource={ds.cloneWithRows(this.props.shows)}
               keyboardShouldPersistTaps={true}

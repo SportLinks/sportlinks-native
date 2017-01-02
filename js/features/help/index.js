@@ -23,20 +23,20 @@ class HelpPage extends Component {
 
   render() {
     return (
-      <Container>
+      <Container theme={myTheme}>
 
-        <Header>
+        <Header style={{paddingTop: 25}}>
           <Title>Help</Title>
           <Button transparent onPress={() => this.props.navigateTo('home', 'home')}>
             <Icon name="ios-arrow-back" />
           </Button>
         </Header>
 
-        <Content padder>
+        <Content padder style={{backgroundColor:'white'}}>
           <View>
             <Text style={styles.titleText}>
               This application is <Text style={{fontWeight: 'bold'}}>not for profit</Text> and is part of a proof of concept of a React Native App.
-              The texts and links of sporting events that are shown by the application are collected from public webs.
+              The texts and links of sporting events that are shown in the application are collected from public webs.
             </Text>
             <Text style={styles.titleText}>
               Following are some useful toolkits for displaying, only for test purposes, the links of the application:

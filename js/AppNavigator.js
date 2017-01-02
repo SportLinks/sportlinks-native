@@ -11,13 +11,15 @@ import ShowDetail from './features/shows/showPage'
 import HelpPage from './features/help'
 import LoginPage from './features/login'
 import statusBarColor from './themes/base-theme'
+import AndroidDefaultTransitioner from './transitions/AndroidDefaultTransitioner'
+import CrossFadeTransitioner from './transitions/CrossFadeTransitioner'
 
 const {
   popRoute
 } = actions
 
 const {
-  CardStack: NavigationCardStack,
+  CardStack,
 } = NavigationExperimental
 
 class AppNavigator extends Component {
@@ -31,6 +33,13 @@ class AppNavigator extends Component {
       key: React.PropTypes.string,
       routes: React.PropTypes.array,
     }),
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        transition: 'androidDefault',
+    };
   }
 
   componentDidMount() {
@@ -50,6 +59,10 @@ class AppNavigator extends Component {
       this.props.popRoute(this.props.navigation.key)
       return true
     })
+  }
+
+  componentWillUnmount() {
+    BackAndroid.removeEventListener("hardwareBackPress");
   }
 
   componentDidUpdate() {
@@ -92,47 +105,54 @@ class AppNavigator extends Component {
   }
 
   render() {
+    const transitionMap = {
+      cardStack: CardStack,
+      androidDefault: AndroidDefaultTransitioner,
+      crossFade: CrossFadeTransitioner,
+    }
+    const Transitioner = transitionMap[this.state.transition]
     return (
-      <Drawer
-        ref={(ref) => { this._drawer = ref}}
-        type="overlay"
-        tweenDuration={200}
-        content={<SideBar navigator={this._navigator} />}
-        tapToClose
-        acceptPan={false}
-        acceptTap={true}
-        onClose={() => this.closeDrawer()}
-        onOpen={() => this.openDrawer()}
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        styles={{
-          drawer: {
-            shadowColor: '#000000',
-            shadowOpacity: 0.8,
-            shadowRadius: 3,
-          },
-        }}
-        tweenHandler={(ratio) => {  // eslint-disable-line
-          return {
-            drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
-            main: {
-              opacity: (2 - ratio) / 2,
+        <Drawer
+          ref={(ref) => { this._drawer = ref}}
+          type="overlay"
+          tweenDuration={200}
+          content={<SideBar navigator={this._navigator} />}
+          tapToClose
+          acceptPan={false}
+          acceptTap={true}
+          onClose={() => this.closeDrawer()}
+          onOpen={() => this.openDrawer()}
+          openDrawerOffset={0.2}
+          panCloseMask={0.2}
+          styles={{
+            drawer: {
+              shadowColor: '#000000',
+              shadowOpacity: 0.8,
+              shadowRadius: 3,
             },
-          }
-        }}
-        negotiatePan
-        disabled={this.props.drawerDisabled}
-      >
-        <StatusBar
-          backgroundColor={statusBarColor.statusBarColor}
-          barStyle="default"
-        />
-        <NavigationCardStack
-          navigationState={this.props.navigation}
-          renderScene={this._renderScene}
-          enableGestures={false}
-        />
-      </Drawer>
+          }}
+          tweenHandler={(ratio) => {  // eslint-disable-line
+            return {
+              drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
+              main: {
+                opacity: (2 - ratio) / 2,
+              },
+            }
+          }}
+          negotiatePan
+          disabled={this.props.drawerDisabled}
+        >
+          <StatusBar
+            backgroundColor={statusBarColor.statusBarColor}
+            translucent={true}
+          />
+          <Transitioner
+            direction="horizontal"
+            renderScene={this._renderScene}
+            navigationState={this.props.navigation}
+            enableGestures={false}
+          />
+        </Drawer>
     )
   }
 }

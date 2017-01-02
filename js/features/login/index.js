@@ -9,47 +9,22 @@ import {GoogleSigninButton} from 'react-native-google-signin'
 import {receiveLoginAction} from './reducers/user'
 import { enableDrawer } from '../../reducers/drawer'
 
-const splashscreen = require('../../../img/splashscreen.png');
+const loginBackground = require('../../../img/login.png');
 const {height, width} = Dimensions.get('window');
 
 class LoginPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      login: false,
-    }
-  }
-
-  componentWillMount() {
-    setTimeout(() => {
-      if (this.props.user && this.props.user.id) {
-        this.props.enableDrawer()
-        this.props.navigateTo('home')
-      } else {
-        this.setState({
-          login: true,
-        })
-        this.props.navigateTo('login')
-      }
-    }, 500);
-  }
-
-  handleSignIn() {
-    this.props.signIn()
-  }
 
   render() {
     return (
-      <Image source={splashscreen} style={{ flex: 1, height: null, width: null }} >
-        {(this.state.login) ?
+      <Image source={loginBackground} style={{ flex: 1, height: null, width: null }} >
         <View style={{flex: 1, alignItems: 'center', paddingTop: height/2 - 40}}>
           <GoogleSigninButton
             style={{width: 312, height: 48}}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
-            onPress={() => this.handleSignIn()}
+            onPress={this.props.signIn}
           />
-        </View> : <View/>}
+        </View>
       </Image>
     )
   }
@@ -60,7 +35,7 @@ function signIn(dispatch) {
     (user) => {
       dispatch(receiveLoginAction(user))
       dispatch(enableDrawer())
-      dispatch(navigateTo('help'))
+      dispatch(navigateTo('help', 'home'))
     },
     (error) => {
       console.log(error)

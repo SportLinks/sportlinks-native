@@ -7,8 +7,7 @@ import Modal from 'react-native-modalbox'
 import AppNavigator from './AppNavigator'
 import ProgressBar from './components/loaders/ProgressBar'
 import theme from './themes/base-theme'
-import {configureGoogleSignIn} from './features/login/services/authService'
-import {userAuthAction} from './features/login/reducers/user'
+import LoginPage from './features/login'
 
 const styles = StyleSheet.create({
   container: {
@@ -37,23 +36,25 @@ class App extends Component {
   }
 
   componentDidMount() {
-
-    // Configure google sign in and get user
-    configureGoogleSignIn().then(() => {
-      this.props.userAuthAction();
-    })
-
     CodePush.sync({ updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE },
       (status) => {
         switch (status) {
+          case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
+            console.log("Checking for updates.");
+            break;
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            console.log("Installing update.");
             this.setState({ showDownloadingModal: true })
             this._modal.open()
             break
+          case CodePush.SyncStatus.UP_TO_DATE:
+            console.log("Up-to-date.");
+            break;
           case CodePush.SyncStatus.INSTALLING_UPDATE:
             this.setState({ showInstalling: true })
             break
           case CodePush.SyncStatus.UPDATE_INSTALLED:
+            console.log("Update installed.");
             this._modal.close()
             this.setState({ showDownloadingModal: false })
             break
@@ -97,12 +98,16 @@ class App extends Component {
       )
     }
 
+    if (!this.props.isLogin) {
+      return <LoginPage />
+    }
+
     return <AppNavigator />
   }
 }
 
-const bindAction = dispatch => ({
-  userAuthAction: () => dispatch(userAuthAction()),
+const mapStateToProps = state => ({
+  isLogin: (state.user.id !== undefined),
 })
 
-export default connect(null, bindAction)(App)
+export default connect(mapStateToProps, null)(App)

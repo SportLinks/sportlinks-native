@@ -5,6 +5,7 @@ import myTheme from '../../themes/base-theme'
 import {View, Text, StyleSheet, Linking, TouchableOpacity, Alert} from 'react-native'
 import {Container, Header, Title, Content, Button, Icon, Card, CardItem} from 'native-base'
 import {navigateTo} from '../../reducers/navigation'
+import IconMD from 'react-native-vector-icons/MaterialIcons'
 
 class ShowDetail extends Component {
   constructor(props) {
@@ -39,6 +40,8 @@ class ShowDetail extends Component {
         return <Icon name="ios-tennisball" style={styles.bigSportIcon} />
       case 'FOOTBALL':
         return <Icon name="ios-american-football" style={styles.bigSportIcon} />
+      case 'MMA':
+        return <Icon name="ios-body" style={styles.bigSportIcon} />
       default:
         return <Icon name="ios-videocam" style={styles.bigSportIcon} />
     }
@@ -46,16 +49,16 @@ class ShowDetail extends Component {
 
   render() {
     return (
-      <Container theme={myTheme} style={styles.container}>
+      <Container theme={myTheme}>
 
-        <Header>
+        <Header style={{paddingTop: 25}}>
           <Title>Streamings</Title>
           <Button transparent onPress={() => this.props.navigateTo('home', 'home')}>
             <Icon name="ios-arrow-back" />
           </Button>
         </Header>
 
-        <Content padder>
+        <Content padder style={{backgroundColor:'white'}}>
           <View style={{flex: 1, justifyContent: 'flex-start'}}>
             <View style={{flex: 4, paddingTop: 0, paddingLeft: 0}}>
               <Card>
@@ -73,12 +76,14 @@ class ShowDetail extends Component {
                 this.props.show.channels.map((channel, index) => {
                   return (
                   <CardItem key={index} onPress={this.openUrl(channel.url)}>
-                    <Icon name="ios-play" style={{ color: '#000000', paddingTop: 9}} />
-                      <View style={{paddingTop: 13, paddingBottom: 10}}>
+                    <View style={{paddingTop: 10, flexDirection: 'row'}}>
+                      <IconMD name="local-play" size={30} color="black" style={{paddingTop: -5}}/>
+                      <View style={{paddingLeft: 10}}>
                         <Text style={styles.titleText}>
-                          Link {index + 1} ({channel.language})
+                          LINK {index + 1} ({channel.language})
                         </Text>
                       </View>
+                    </View>
                   </CardItem>
                   )
                 })
@@ -98,11 +103,11 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   titleText: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 'bold'
   },
   baseText: {
-    fontSize: 12
+    fontSize: 13
   },
   titleSection: {
     fontSize: 14,
@@ -112,8 +117,8 @@ const styles = StyleSheet.create({
   },
   bigSportIcon: {
     color: '#000000',
-    paddingTop: -5,
-    paddingLeft: 5,
+    paddingTop: -2,
+    paddingLeft: 0,
     fontSize: 60,
   }
 })

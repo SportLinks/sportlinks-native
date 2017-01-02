@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   baseText: {
-    fontSize: 14
+    fontSize: 13
   },
   titleSection: {
     fontSize: 14,

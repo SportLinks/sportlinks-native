@@ -30,23 +30,6 @@ class ShowDetail extends Component {
     }
   }
 
-  renderIcon = (sport) => {
-    switch (sport.toUpperCase()) {
-      case 'SOCCER':
-        return <Icon name="ios-football" style={styles.bigSportIcon} />
-      case 'BASKETBALL':
-        return <Icon name="ios-basketball" style={styles.bigSportIcon} />
-      case 'TENNIS':
-        return <Icon name="ios-tennisball" style={styles.bigSportIcon} />
-      case 'FOOTBALL':
-        return <Icon name="ios-american-football" style={styles.bigSportIcon} />
-      case 'MMA':
-        return <Icon name="ios-body" style={styles.bigSportIcon} />
-      default:
-        return <Icon name="ios-videocam" style={styles.bigSportIcon} />
-    }
-  }
-
   render() {
     return (
       <Container theme={myTheme}>
@@ -115,12 +98,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     color: 'black',
   },
-  bigSportIcon: {
-    color: '#000000',
-    paddingTop: -2,
-    paddingLeft: 0,
-    fontSize: 60,
-  }
 })
 
 function mapStateToProps(state) {

@@ -34,19 +34,35 @@ class ShowsList extends Component {
     }
   }
 
-  renderRow = (rowData, sectionID, rowID, highlightRow) => {
+  renderRow = (rowData, sectionId, rowId, highlightRow) => {
+    let dateSeparator = ''
+    if (rowId === '0' || (this.props.shows[rowId-1].date !== this.props.shows[rowId].date)) {
+      dateSeparator = dateFormat(this.props.shows[rowId].date, 'dddd, mmmm d')
+    }
     return (
-      <TouchableOpacity key={rowID}
-        onPress={this.props.handleShowSelected(rowData)}>
-        <View style={{flex: 1, flexDirection: 'row', paddingLeft: 5, paddingTop: 10}} >
-          {this.renderIcon(rowData.sport)}
-          <View style={{flex: 1, paddingLeft: 10, paddingBottom: 10}} >
-            <Text style={styles.titleText}>{rowData.event}</Text>
-            <Text style={styles.baseText}>{rowData.sport} - {rowData.competition}</Text>
-            <Text style={styles.baseText}>{rowData.date} {rowData.hour}</Text>
+      <View key={rowId}>
+        {(dateSeparator !== '') ?
+        <View style={{height: 35, backgroundColor: '#d1e0fc', alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{color: '#404142', fontWeight: 'bold'}}>{dateSeparator}</Text>
+        </View>: null}
+        <TouchableOpacity
+          onPress={this.props.handleShowSelected(rowData)}>
+          <View style={{flex: 1, flexDirection: 'row', paddingLeft: 5, paddingTop: 10}} >
+            {this.renderIcon(rowData.sport)}
+            <View style={{flex: 1, paddingLeft: 10, paddingBottom: 10}} >
+              <Text style={styles.titleText}>{rowData.event}</Text>
+              <Text style={styles.baseText}>{rowData.sport} - {rowData.competition}</Text>
+              <Text style={styles.baseText}>{rowData.date} {rowData.hour}</Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  renderSeparator(sectionId, rowId) {
+    return (
+      <View key={sectionId + 'r' + rowId} style={styles.separator} />
     )
   }
 
@@ -70,7 +86,7 @@ class ShowsList extends Component {
               keyboardShouldPersistTaps={true}
               renderRow={this.renderRow}
               enableEmptySections={true}
-              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+              renderSeparator={this.renderSeparator}
               refreshControl={
                 <RefreshControl
                   refreshing={this.props.loading}

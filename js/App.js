@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet } from 'react-native'
 import CodePush from 'react-native-code-push'
-import { Container, Content, Text, View } from 'native-base'
+import { Text, View } from 'native-base'
 import Modal from 'react-native-modalbox'
 import AppNavigator from './navigation/AppNavigator'
 import ProgressBar from './components/loaders/ProgressBar'
@@ -39,26 +39,22 @@ export default class App extends Component {
       (status) => {
         switch (status) {
           case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
-            console.log("Checking for updates.");
             break;
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-            console.log("Installing update.");
             this.setState({ showDownloadingModal: true })
             this._modal.open()
-            break
+            break;
           case CodePush.SyncStatus.UP_TO_DATE:
-            console.log("Up-to-date.");
             break;
           case CodePush.SyncStatus.INSTALLING_UPDATE:
             this.setState({ showInstalling: true })
-            break
+            break;
           case CodePush.SyncStatus.UPDATE_INSTALLED:
-            console.log("Update installed.");
             this._modal.close()
             this.setState({ showDownloadingModal: false })
-            break
+            break;
           default:
-            break
+            break;
         }
       },
       ({ receivedBytes, totalBytes }) => {
@@ -70,30 +66,26 @@ export default class App extends Component {
   render() {
     if (this.state.showDownloadingModal) {
       return (
-        <Container theme={theme} style={{ backgroundColor: theme.defaultBackgroundColor }}>
-          <Content style={styles.container}>
-            <Modal
-              style={[styles.modal, styles.modal1]}
-              backdrop={false}
-              ref={(c) => { this._modal = c }}
-              swipeToClose={false}
-            >
+        <Modal
+          style={[styles.modal, styles.modal1]}
+          backdrop={false}
+          ref={(c) => { this._modal = c }}
+          swipeToClose={false}
+        >
+          <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
+            {this.state.showInstalling ?
+              <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
+                Installing update...
+              </Text> :
               <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
-                {this.state.showInstalling ?
-                  <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
-                    Installing update...
-                  </Text> :
-                  <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
-                    <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
-                      Downloading update... {`${parseInt(this.state.downloadProgress, 10)} %`}
-                    </Text>
-                    <ProgressBar color="theme.brandPrimary" progress={parseInt(this.state.downloadProgress, 10)} />
-                  </View>
-                }
+                <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
+                  Downloading update... {`${parseInt(this.state.downloadProgress, 10)} %`}
+                </Text>
+                <ProgressBar color="theme.brandPrimary" progress={parseInt(this.state.downloadProgress, 10)} />
               </View>
-            </Modal>
-          </Content>
-        </Container>
+            }
+          </View>
+        </Modal>
       )
     }
 

@@ -121,9 +121,10 @@ class AppNavigator extends Component {
           onDrawerOpen={() => this.openDrawer()}
           drawerLockMode={(this.props.drawerDisabled) ? 'locked-closed' : 'unlocked'}>
           <StatusBar
-            backgroundColor={statusBarColor.statusBarColor}
             translucent={true}
-          />
+            backgroundColor="rgba(0, 0, 0, 0.15)"
+            barStyle="light-content"
+           />
           <Transitioner
             direction="horizontal"
             renderScene={this._renderScene}

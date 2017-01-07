@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Button, TouchableHighlight, Modal, Text, View } from 'react-native'
 import CodePush from 'react-native-code-push'
-import { Text, View } from 'native-base'
-import Modal from 'react-native-modalbox'
 import AppNavigator from './navigation/AppNavigator'
 import ProgressBar from './components/loaders/ProgressBar'
 import theme from './themes/base-theme'
@@ -34,6 +32,10 @@ export default class App extends Component {
     }
   }
 
+  setModalVisible(visible) {
+    this.setState({showDownloadingModal: visible});
+  }
+
   componentDidMount() {
     CodePush.sync({ updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE },
       (status) => {
@@ -42,7 +44,6 @@ export default class App extends Component {
             break;
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
             this.setState({ showDownloadingModal: true })
-            this._modal.open()
             break;
           case CodePush.SyncStatus.UP_TO_DATE:
             break;
@@ -50,7 +51,6 @@ export default class App extends Component {
             this.setState({ showInstalling: true })
             break;
           case CodePush.SyncStatus.UPDATE_INSTALLED:
-            this._modal.close()
             this.setState({ showDownloadingModal: false })
             break;
           default:
@@ -64,31 +64,32 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.showDownloadingModal) {
-      return (
+    return (
+      <View style={{flex: 1}}>
         <Modal
-          style={[styles.modal, styles.modal1]}
-          backdrop={false}
-          ref={(c) => { this._modal = c }}
-          swipeToClose={false}
-        >
-          <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
-            {this.state.showInstalling ?
-              <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
-                Installing update...
-              </Text> :
-              <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
-                <Text style={{ color: theme.brandPrimary, textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
-                  Downloading update... {`${parseInt(this.state.downloadProgress, 10)} %`}
-                </Text>
-                <ProgressBar color="theme.brandPrimary" progress={parseInt(this.state.downloadProgress, 10)} />
-              </View>
-            }
+          animationType={"slide"}
+          transparent={true}
+          visible={this.state.showDownloadingModal}
+          onRequestClose={() => {}}
+          >
+          <View style={{flex:100, backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+            <View style={{borderRadius: 10, elevation: 10, backgroundColor: 'white', marginTop: 225, margin: 20, height: 150}}>
+             {this.state.showInstalling ?
+               <Text style={{textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
+                 Installing update...
+               </Text> :
+               <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', padding: 20 }}>
+                 <Text style={{ textAlign: 'center', marginBottom: 15, fontSize: 15 }}>
+                   Downloading update... {`${parseInt(this.state.downloadProgress, 10)} %`}
+                 </Text>
+                 <ProgressBar color="theme.brandPrimary" progress={parseInt(this.state.downloadProgress, 10)} />
+               </View>
+             }
+            </View>
           </View>
         </Modal>
-      )
-    }
-
-    return <AppNavigator />
+        <AppNavigator />
+      </View>
+    )
   }
 }

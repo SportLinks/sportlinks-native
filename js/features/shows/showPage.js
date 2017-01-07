@@ -59,10 +59,10 @@ class ShowDetail extends Component {
                   return (
                   <CardItem key={index} onPress={this.openUrl(channel.url)}>
                     <View style={{paddingTop: 10, flexDirection: 'row'}}>
-                      <IconMD name="local-play" size={30} color="black" style={{paddingTop: -5}}/>
+                      <IconMD name="local-play" size={30} color="#c41919" style={{paddingTop: -5}}/>
                       <View style={{paddingLeft: 10}}>
-                        <Text style={styles.titleText}>
-                          LINK {index + 1} ({channel.language})
+                        <Text style={{color: '#37373a', fontWeight: 'bold'}}>
+                          Link {index + 1} ({channel.language})
                         </Text>
                       </View>
                     </View>
@@ -85,11 +85,13 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   titleText: {
-    fontSize: 15,
-    fontWeight: 'bold'
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#404142',
   },
   baseText: {
-    fontSize: 13
+    fontSize: 13,
+    color: '#4a4b4c'
   },
   titleSection: {
     fontSize: 14,

@@ -19,21 +19,23 @@ class ShowsList extends Component {
   }
 
   renderIcon = (sport) => {
+
     switch (sport.toUpperCase()) {
       case 'SOCCER':
-        return <Icon name="ios-football" style={styles.litleSportIcon} />
+        return <Icon name="ios-football" style={[styles.litleSportIcon, {color: 'black'}]} />
       case 'BASKETBALL':
-        return <Icon name="ios-basketball" style={styles.litleSportIcon} />
+        return <Icon name="ios-basketball" style={[styles.litleSportIcon, {color: '#a85803'}]} />
       case 'TENNIS':
-        return <Icon name="ios-tennisball" style={styles.litleSportIcon} />
+        return <Icon name="ios-tennisball" style={[styles.litleSportIcon, {color: '#edff66'}]} />
       case 'FOOTBALL':
-        return <Icon name="ios-american-football" style={styles.litleSportIcon} />
+        return <Icon name="ios-american-football" style={[styles.litleSportIcon, {color: '#683700'}]}  />
       case 'MMA':
         return <Icon name="ios-body" style={styles.litleSportIcon} />
       default:
         return <Icon name="ios-videocam" style={styles.litleSportIcon} />
     }
   }
+
 
   dateToISO(date) {
     let year = date.substring(6, date.length)
@@ -51,7 +53,7 @@ class ShowsList extends Component {
       <View key={rowId}>
         {(dateSeparator !== '') ?
         <View style={{height: 35, backgroundColor: '#d1e0fc', alignItems: 'center', justifyContent: 'center'}}>
-          <Text style={{color: '#404142', fontWeight: 'bold'}}>{dateSeparator}</Text>
+          <Text style={{color: 'black', fontWeight: 'bold'}}>{dateSeparator}</Text>
         </View>: null}
         <TouchableOpacity
           onPress={this.props.handleShowSelected(rowData)}>
@@ -86,7 +88,7 @@ class ShowsList extends Component {
             <Icon name="ios-menu" />
           </Button>
           <Title>Sporting Shows</Title>
-          <Button transparent onPress={() => {this.handleModalFilterVisible(true)}}>
+          <Button transparent onPress={() => {}}>
             <IconMD name='filter-list' size={25} color="white" />
           </Button>
         </Header>
@@ -116,10 +118,12 @@ class ShowsList extends Component {
 const styles = StyleSheet.create({
   titleText: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#404142',
   },
   baseText: {
     fontSize: 13,
+    color: '#4a4b4c'
   },
   litleSportIcon: {
     color: '#000000',
@@ -137,11 +141,11 @@ function mapStateToProps(state) {
   let receivedAt = state.shows.receivedAt
   return {
     sourceId: state.shows.sourceId,
-    shows: state.shows.list.filter((show) => {
+    shows: state.shows.list/*.filter((show) => {
       if (show.sport === 'BASKETBALL') {
         return show
       }
-    }),
+    })*/,
     loading: state.shows.loading,
     receivedAt: (receivedAt!==undefined) ? dateFormat(receivedAt, "HH:MM:ss") : undefined
   }

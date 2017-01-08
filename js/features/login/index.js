@@ -17,7 +17,7 @@ class LoginPage extends Component {
   render() {
     return (
       <Image source={loginBackground} style={{ flex: 1, height: null, width: null }} >
-        <View style={{flex: 1, alignItems: 'center', paddingTop: height/2 - 40}}>
+        <View style={{flex: 1, alignItems: 'center', paddingTop: this.props.height/2 - 40}}>
           <GoogleSigninButton
             style={{width: 312, height: 48}}
             size={GoogleSigninButton.Size.Wide}

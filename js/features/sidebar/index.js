@@ -9,7 +9,7 @@ import styles from './style'
 import {userLogOutAction} from '../../features/login/reducers/user'
 import {disableDrawer} from '../../reducers/drawer'
 
-const drawerCover = require('../../../img/drawer-cover.png')
+const drawerCover = require('../../../img/drawer-cover.jpg')
 const version = require('../../../package.json').version
 const {height, width} = Dimensions.get('window');
 
@@ -46,7 +46,7 @@ class SideBar extends Component {
         <List>
           <ListItem button iconLeft onPress={() => this.navigateTo('home')} >
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#fc2448',   paddingLeft: 8.5 }]}>
+              <View style={[styles.iconContainer, { backgroundColor: '#c41919', paddingLeft: 8.5 }]}>
                 <Icon name="logo-youtube" style={styles.sidebarIcon} />
               </View>
               <Text style={styles.text}>Sporting Shows</Text>
@@ -54,7 +54,7 @@ class SideBar extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.props.logout()} >
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#76D7C4',   paddingLeft: 11 }]}>
+              <View style={[styles.iconContainer, { backgroundColor: '#76D7C4', paddingLeft: 11 }]}>
                 <Icon name="md-log-out" style={styles.sidebarIcon} />
               </View>
               <Text style={styles.text}>Log Out</Text>
@@ -62,7 +62,7 @@ class SideBar extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('help')} >
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#62bcff',   paddingLeft: 13 }]}>
+              <View style={[styles.iconContainer, { backgroundColor: '#62bcff', paddingLeft: 13 }]}>
                 <Icon name="md-help" style={styles.sidebarIcon} />
               </View>
               <Text style={styles.text}>Help</Text>

@@ -19,14 +19,13 @@ class ShowsList extends Component {
   }
 
   renderIcon = (sport) => {
-
     switch (sport.toUpperCase()) {
       case 'SOCCER':
         return <Icon name="ios-football" style={[styles.litleSportIcon, {color: 'black'}]} />
       case 'BASKETBALL':
         return <Icon name="ios-basketball" style={[styles.litleSportIcon, {color: '#a85803'}]} />
       case 'TENNIS':
-        return <Icon name="ios-tennisball" style={[styles.litleSportIcon, {color: '#edff66'}]} />
+        return <Icon name="ios-tennisball" style={[styles.litleSportIcon, {color: '#f2ff66'}]} />
       case 'FOOTBALL':
         return <Icon name="ios-american-football" style={[styles.litleSportIcon, {color: '#683700'}]}  />
       case 'MMA':
@@ -35,7 +34,6 @@ class ShowsList extends Component {
         return <Icon name="ios-videocam" style={styles.litleSportIcon} />
     }
   }
-
 
   dateToISO(date) {
     let year = date.substring(6, date.length)

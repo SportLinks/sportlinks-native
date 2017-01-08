@@ -52,19 +52,11 @@ class HelpPage extends Component {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontSize: 15
-  },
   titleText: {
     fontSize: 15,
-    paddingBottom: 10
+    paddingBottom: 10,
+    color: '#404142',
   },
-  titleSection: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    paddingBottom: 5,
-    color: 'black'
-  }
 })
 
 function bindAction(dispatch) {

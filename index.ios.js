@@ -1,4 +1,4 @@
-import setup from './js/setup'
+import Root from './js/Root'
 import {AppRegistry} from 'react-native'
 
-AppRegistry.registerComponent('sportlinks_native', () => setup())
+AppRegistry.registerComponent('sportlinks_native', () => Root)

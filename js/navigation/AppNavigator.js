@@ -91,7 +91,7 @@ class AppNavigator extends Component {
   _renderScene(props) { // eslint-disable-line class-methods-use-this
     switch (props.scene.route.key) {
       case 'login':
-        return <LoginPage />
+        return <LoginPage height={this.props.height}/>
       case 'home':
         return <ShowsList />
       case 'showDetail':
@@ -127,7 +127,7 @@ class AppNavigator extends Component {
            />
           <Transitioner
             direction="horizontal"
-            renderScene={this._renderScene}
+            renderScene={this._renderScene.bind(this)}
             navigationState={this.props.navigation}
             enableGestures={false}
           />

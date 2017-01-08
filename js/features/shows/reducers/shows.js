@@ -1,8 +1,9 @@
 import {getShows} from '../services/showsService'
 
-export const FETCH_SHOWS_REQUEST = 'FETCH_SHOWS_REQUEST'
-export const FETCH_SHOWS_SUCCESS = 'FETCH_SHOWS_SUCCESS'
-export const SHOW_SELECTED = 'SHOW_SELECTED'
+const FETCH_SHOWS_REQUEST = 'FETCH_SHOWS_REQUEST'
+const FETCH_SHOWS_SUCCESS = 'FETCH_SHOWS_SUCCESS'
+const SHOW_SELECTED = 'SHOW_SELECTED'
+const APPLY_SPORTS_FILTER = 'APPLY_SPORTS_FILTER'
 
 export const requestShowsAction = (sourceId) =>
   ({
@@ -22,7 +23,7 @@ export const receiveShowsAction = ({sourceId, shows, receivedAt} = {}) =>
       loading: false,
       sourceId: sourceId,
       list: shows,
-      receivedAt: receivedAt
+      receivedAt: receivedAt,
     }
   })
 
@@ -47,11 +48,20 @@ export const showSelectedAction = (show) =>
     }
   })
 
+export const applySportsFilter = (filter) =>
+  ({
+    type: APPLY_SPORTS_FILTER,
+    state: {
+      filter: filter
+    }
+  })
+
 const initialState = {
   loading: false,
   sourceId: '1',
   list: [],
-  receivedAt: undefined
+  receivedAt: undefined,
+  filter: {}
 }
 
 export default function shows(state = initialState, action) {
@@ -59,6 +69,7 @@ export default function shows(state = initialState, action) {
     case FETCH_SHOWS_REQUEST:
     case FETCH_SHOWS_SUCCESS:
     case SHOW_SELECTED:
+    case APPLY_SPORTS_FILTER:
       return {
         ...state,
         ...action.state

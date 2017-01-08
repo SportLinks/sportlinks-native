@@ -2,12 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {showSelectedAction, fetchShowsAction} from './reducers/shows'
 import dateFormat from 'dateformat'
-import {View, Text, ListView, TouchableOpacity, StyleSheet, RefreshControl} from 'react-native'
+import {View, Text, ListView, TouchableOpacity, StyleSheet, RefreshControl, DrawerLayoutAndroid} from 'react-native'
 import {navigateTo} from '../../reducers/navigation'
 import {Container, Header, Title, Content, Button, Icon} from 'native-base'
 import myTheme from '../../themes/base-theme'
 import {openDrawer} from '../../reducers/drawer'
 import IconMD from 'react-native-vector-icons/MaterialIcons'
+import FilterScreeen from './components/FilterScreen'
+import FilterHeader from './components/FilterHeader'
 
 class ShowsList extends Component {
   constructor(props) {
@@ -78,37 +80,51 @@ class ShowsList extends Component {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     })
+
+    const filterHeader = Object.keys(this.props.filter).length > 0
+    ? <FilterHeader />
+    : null;
+
     return (
-      <Container theme={myTheme}>
+      <DrawerLayoutAndroid
+        ref={(drawer) => { this._drawer = drawer; }}
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Right}
+        renderNavigationView={() => <FilterScreeen onClose={() => this._drawer.closeDrawer()} />} >
 
-        <Header style={{paddingTop: 25}}>
-          <Button transparent onPress={this.props.openDrawer}>
-            <Icon name="ios-menu" />
-          </Button>
-          <Title>Sporting Shows</Title>
-          <Button transparent onPress={() => {}}>
-            <IconMD name='filter-list' size={25} color="white" />
-          </Button>
-        </Header>
+        <Container theme={myTheme}>
 
-        <View style={{flex: 1, backgroundColor: 'white'}}>
-          <ListView style={{marginLeft: 0, marginRight: 0}}
-            dataSource={ds.cloneWithRows(this.props.shows)}
-            keyboardShouldPersistTaps={true}
-            renderRow={this.renderRow}
-            enableEmptySections={true}
-            renderSeparator={this.renderSeparator}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.props.loading}
-                onRefresh={this._onRefresh.bind(this)}
-                colors={['blue', 'green', 'red']}
-              />
-            }
-          />
-        </View>
+          <Header style={{paddingTop: 25}}>
+            <Button transparent onPress={this.props.openDrawer}>
+              <Icon name="ios-menu" />
+            </Button>
+            <Title>Sporting Shows</Title>
+            <Button transparent onPress={() => {this._drawer.openDrawer()}}>
+              <IconMD name='filter-list' size={25} color="white" />
+            </Button>
+          </Header>
 
-      </Container>
+          <View style={{flex: 1, backgroundColor: 'white'}}>
+            {filterHeader}
+            <ListView style={{marginLeft: 0, marginRight: 0}}
+              dataSource={ds.cloneWithRows(this.props.shows)}
+              keyboardShouldPersistTaps={true}
+              renderRow={this.renderRow}
+              enableEmptySections={true}
+              renderSeparator={this.renderSeparator}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.props.loading}
+                  onRefresh={this._onRefresh.bind(this)}
+                  colors={['blue', 'green', 'red']}
+                />
+              }
+            />
+          </View>
+
+        </Container>
+
+      </DrawerLayoutAndroid>
     )
   }
 }
@@ -135,15 +151,34 @@ const styles = StyleSheet.create({
   },
 })
 
+function upperCase(str) {
+  return str.toUpperCase();
+}
+
+function toCamelCase(str) {
+  str = str.replace('-', ' - ')
+  var firstLetterRx = /(^|\s)[a-z]/g;
+  return str.replace(firstLetterRx, upperCase);
+}
+
+function sportsFilter(list, filter) {
+  if (Object.keys(filter).length == 0) {
+    return list
+  } else {
+    return list.filter((show) => {
+      if (filter.hasOwnProperty(toCamelCase(show.sport.toLowerCase()))) {
+        return show
+      }
+    })
+  }
+}
+
 function mapStateToProps(state) {
   let receivedAt = state.shows.receivedAt
   return {
     sourceId: state.shows.sourceId,
-    shows: state.shows.list/*.filter((show) => {
-      if (show.sport === 'BASKETBALL') {
-        return show
-      }
-    })*/,
+    shows: sportsFilter(state.shows.list, state.shows.filter),
+    filter: state.shows.filter,
     loading: state.shows.loading,
     receivedAt: (receivedAt!==undefined) ? dateFormat(receivedAt, "HH:MM:ss") : undefined
   }

@@ -9,6 +9,8 @@ import {configureGoogleSignIn} from './features/login/services/authService'
 import {navigateTo} from './reducers/navigation'
 import {disableDrawer} from './reducers/drawer'
 
+console.disableYellowBox = true
+
 export default class Root extends Component {
 
   constructor() {
@@ -53,5 +55,5 @@ export default class Root extends Component {
       )
     }
   }
-  
+
 }

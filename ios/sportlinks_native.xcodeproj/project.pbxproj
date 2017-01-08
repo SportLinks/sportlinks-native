@@ -51,6 +51,7 @@
 		DB733366A317467B869DAD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB0F34A18964668A9F38773 /* SystemConfiguration.framework */; };
 		AD8AE74846094B689E743CBB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708ADF21AD8A449FA6A778DC /* AddressBook.framework */; };
 		99DBF1D08EA1490C9DBCEEFC /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7835076BCC9D4C47AA20F261 /* libSplashScreen.a */; };
+		793AA7C6A39B458CAAD7BDF0 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7985784058EE4D7EBC572280 /* libBVLinearGradient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,8 @@
 		708ADF21AD8A449FA6A778DC /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		B447AD5219F64BDDB54F01FA /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		7835076BCC9D4C47AA20F261 /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		725C4F9DEA1C461C85F9D3A4 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		7985784058EE4D7EBC572280 /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,7 @@
 				DB733366A317467B869DAD06 /* SystemConfiguration.framework in Frameworks */,
 				AD8AE74846094B689E743CBB /* AddressBook.framework in Frameworks */,
 				99DBF1D08EA1490C9DBCEEFC /* libSplashScreen.a in Frameworks */,
+				793AA7C6A39B458CAAD7BDF0 /* libBVLinearGradient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +376,7 @@
 				1F34E9DEC85A4A64906887FA /* CodePush.xcodeproj */,
 				A0BECA903E94474CAFE0AC03 /* RNGoogleSignin.xcodeproj */,
 				B447AD5219F64BDDB54F01FA /* SplashScreen.xcodeproj */,
+				725C4F9DEA1C461C85F9D3A4 /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -766,8 +771,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -784,8 +787,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sportlinks_native.app/sportlinks_native";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -868,6 +869,7 @@
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -912,6 +914,7 @@
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "dateformat": "^2.0.0",
+    "fb-js": "^0.1.3",
     "firebase": "^3.6.4",
     "native-base": "^0.5.18",
     "react": "15.4.1",
@@ -21,6 +22,7 @@
     "react-native-code-push": "^1.16.1-beta",
     "react-native-google-signin": "^0.8.1",
     "react-native-htmlview": "^0.5.0",
+    "react-native-linear-gradient": "^1.6.2",
     "react-native-modalbox": "^1.3.8",
     "react-native-navigation-redux-helpers": "^0.5.0",
     "react-native-splash-screen": "^1.0.9",

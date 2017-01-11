@@ -3,7 +3,7 @@ const SPORTS_COLORS = {
   'BASKETBALL': '#a85803',
   'TENNIS': '#f2ff66',
   'FOOTBALL': '#683700',
-  'OTHERS': 'white',
+  'MMA': 'black',
 };
 
 function colorForSport(sport: ?string): string {
@@ -19,6 +19,11 @@ function colorForSport(sport: ?string): string {
   return color;
 }
 
+function colorForTopic(count: number, index: number): string {
+  const hue = Math.round(360 * index / (count + 1));
+  return `hsl(${hue}, 74%, 65%)`;
+}
+
 module.exports = {
   actionText: '#3FB4CF',
   inactiveText: '#9B9B9B',
@@ -27,4 +32,5 @@ module.exports = {
   cellBorder: '#EEEEEE',
   darkBackground: '#183E63',
   colorForSport,
+  colorForTopic,
 };

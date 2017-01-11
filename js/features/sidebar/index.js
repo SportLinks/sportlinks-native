@@ -37,7 +37,7 @@ class SideBar extends Component {
               <Text style={{paddingTop: 10, fontSize: 15, fontWeight: 'bold', color: 'white'}}>{this.props.user.name}</Text>
               <Text style={{paddingTop: -5, fontSize: 14, color: '#CACFD2'}}>{this.props.user.email}</Text>
             </View>
-            <View style={{paddingTop: -30, paddingLeft: 240}}>
+            <View style={{paddingTop: -30, paddingLeft: 250}}>
               <Text style={{color: 'white'}}>v{version}</Text>
             </View>
           </View>
@@ -57,7 +57,7 @@ class SideBar extends Component {
               <View style={[styles.iconContainer, { backgroundColor: '#76D7C4', paddingLeft: 11 }]}>
                 <Icon name="md-log-out" style={styles.sidebarIcon} />
               </View>
-              <Text style={styles.text}>Log Out</Text>
+              <Text style={styles.text}>Logout</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('help')} >

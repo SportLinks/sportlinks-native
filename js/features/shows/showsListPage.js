@@ -156,6 +156,7 @@ function upperCase(str) {
 }
 
 function toCamelCase(str) {
+  if (str === 'mma') return 'MMA'
   str = str.replace('-', ' - ')
   var firstLetterRx = /(^|\s)[a-z]/g;
   return str.replace(firstLetterRx, upperCase);

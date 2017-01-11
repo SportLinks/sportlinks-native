@@ -88,10 +88,10 @@ class AppNavigator extends Component {
     }
   }
 
-  _renderScene(props) { // eslint-disable-line class-methods-use-this
+  _renderScene(props) {
     switch (props.scene.route.key) {
       case 'login':
-        return <LoginPage height={this.props.height}/>
+        return <LoginPage height={this.props.height} width={this.props.width}/>
       case 'home':
         return <ShowsList />
       case 'showDetail':

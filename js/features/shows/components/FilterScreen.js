@@ -139,7 +139,7 @@ var styles = StyleSheet.create({
 
 function select(store) {
   return {
-    sports: ['Soccer', 'Basketball', 'Tennis', 'Football',],
+    sports: ['Soccer', 'Basketball', 'Tennis', 'Football', 'MMA'],
     selectedSports: store.shows.filter,
   };
 }

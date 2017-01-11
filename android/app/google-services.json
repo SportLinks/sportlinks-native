@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "631365010339-th91f1nt1hhrvms1osle4d109bi5bpoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sportlinks_native",
+            "certificate_hash": "678F0A6B45B38CBA8EFF68B6ACB74E2F7D7F4526"
+          }
+        },
+        {
           "client_id": "631365010339-26cr7grpcr09hdoojina0do9agi5isp8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

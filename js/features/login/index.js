@@ -31,18 +31,19 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-    this.animateButton()
-    this.animateSquaresOverlay()
+    Animated.sequence([
+      this.animateSquaresOverlay(),
+      this.animateButton(),
+    ]).start()
   }
 
   animateButton() {
-    Animated.timing(this.animButton,
+    return Animated.spring(this.animButton,
       {
         toValue: 1,
-        duration: 1500,
-        easing: Easing.elastic(3)
+        friction: 4
       }
-    ).start()
+    )
   }
 
   animateSquaresOverlay() {
@@ -51,17 +52,17 @@ class LoginPage extends Component {
         item,
         {
           toValue: 0,
-          duration: 1500
+          duration: 750
         }
       )
     })
-    Animated.stagger(25, animations).start()
+    return Animated.stagger(25, animations)
   }
 
   render() {
-    var paddingTop = this.animButton.interpolate({
+    var top = this.animButton.interpolate({
       inputRange: [0, 1],
-      outputRange: [-150, 150],
+      outputRange: [-100, this.props.height/2 - 24],
     })
 
     const animations = this.animatedValue.map((value, index) => {
@@ -80,7 +81,7 @@ class LoginPage extends Component {
     return (
       <Image source={loginBackground} style={styles.container} >
         {animations}
-        <Animated.View style={[{zIndex: 10, position:'absolute', top: this.props.height/2 - 24 - 150, left: (this.props.width - 312)/2}, {paddingTop}]}>
+        <Animated.View style={[{zIndex: 10, position:'absolute', left: (this.props.width - 312)/2}, {top}]}>
           <GoogleSigninButton
             style={{width: 312, height: 48}}
             size={GoogleSigninButton.Size.Wide}

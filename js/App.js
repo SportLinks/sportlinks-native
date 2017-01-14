@@ -32,8 +32,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container} onLayout={this._onLayout.bind(this)}>
-        <CodePushModal height={this.state.height} />
-        <AppNavigator height={this.state.height} width={this.state.width} />
+        <CodePushModal {...this.state} />
+        <AppNavigator {...this.state} />
       </View>
     )
   }

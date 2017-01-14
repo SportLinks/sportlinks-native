@@ -21,7 +21,7 @@ class LoginPage extends Component {
     }
     this.squareSize = 80
     this.squarePadding = 4
-    this.squares = 28 //Math.round(this.props.height*this.props.width/(this.squareSize*this.squareSize))
+    this.squares = Math.round(this.props.height*this.props.width / Math.pow(this.squareSize+this.squarePadding, 2))
     this.arr = []
     for (var i = 0; i < this.squares; i++) {
       this.arr.push(i)
@@ -60,7 +60,7 @@ class LoginPage extends Component {
     console.log(this.props.width)
     var paddingTop = this.state.anim.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, -this.props.height/2 - 15],
+      outputRange: [0, -this.props.height*0.8],
     })
 
     const animations = this.arr.map((a, i) => {

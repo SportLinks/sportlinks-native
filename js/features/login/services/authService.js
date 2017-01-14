@@ -36,7 +36,9 @@ export const login = () => {
   return new Promise((resolve, reject) => {
     GoogleSignin.signIn()
     .then((user) => {
-      firebaseApp.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(null, user.accessToken))
+      if (user.accessToken) {
+        firebaseApp.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(null, user.accessToken))
+      }
       resolve(user)
     })
     .catch((err) => {

@@ -36,14 +36,14 @@ class LoginPage extends Component {
     Animated.timing(this.state.anim,
       {
         toValue: 1,
-        duration: 1000,
-        easing: Easing.elastic(2)
+        duration: 1500,
+        easing: Easing.elastic(3)
       }
     ).start()
     this.animate()
   }
 
-  animate () {
+  animate() {
     const animations = this.arr.map((item) => {
       return Animated.timing(
         this.animatedValue[item],
@@ -57,20 +57,19 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(this.props.width)
     var paddingTop = this.state.anim.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, -this.props.height*0.8],
+      outputRange: [-150, 150],
     })
 
     const animations = this.arr.map((a, i) => {
-      return <Animated.View key={i} style={{opacity: this.animatedValue[a], height: this.squareSize, width: this.squareSize, backgroundColor: colorForTopic(this.squares, i), margin: this.squarePadding}} />
+      return <Animated.View key={i} style={{zIndex: 1, opacity: this.animatedValue[a], height: this.squareSize, width: this.squareSize, backgroundColor: colorForTopic(this.squares, i), margin: this.squarePadding}} />
     })
 
     return (
       <Image source={loginBackground} style={styles.container} >
         {animations}
-        <Animated.View style={[{paddingTop}]}>
+        <Animated.View style={[{zIndex: 10, position:'absolute', top: this.props.height/2 - 24 - 150, left: (this.props.width - 312)/2}, {paddingTop}]}>
           <GoogleSigninButton
             style={{width: 312, height: 48}}
             size={GoogleSigninButton.Size.Wide}
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     height: null,
     width: null,
     paddingTop: 13,
-  }
+  },
 })
 
 function signIn(dispatch) {

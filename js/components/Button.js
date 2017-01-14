@@ -1,11 +1,8 @@
-var Colors = require('./Colors');
-var Image = require('Image');
-import LinearGradient from 'react-native-linear-gradient';
-var React = require('React');
-var StyleSheet = require('StyleSheet');
-var { Text } = require('./Text');
-var TouchableOpacity = require('TouchableOpacity');
-var View = require('View');
+import React from 'react'
+import Colors from './Colors'
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import { Text } from './Text'
 
 class Button extends React.Component {
   props: {

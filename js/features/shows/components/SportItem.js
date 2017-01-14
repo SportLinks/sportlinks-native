@@ -1,10 +1,10 @@
-var React = require('react');
-var {
+import React from 'react'
+import {
   StyleSheet,
   View,
   TouchableOpacity,
   Text,
-} = require('react-native');
+} from 'react-native'
 
 class SportItem extends React.Component {
   props: {

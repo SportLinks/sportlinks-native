@@ -1,6 +1,4 @@
-import Color from 'color';
-
-import {Platform} from 'react-native';
+import { Platform, Color } from 'react-native';
 
 export default {
 

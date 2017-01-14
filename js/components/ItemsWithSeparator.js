@@ -1,7 +1,5 @@
-var PixelRatio = require('PixelRatio');
-var React = require('React');
-var StyleSheet = require('StyleSheet');
-var View = require('View');
+import React from 'react'
+import { StyleSheet, View, PixelRatio } from 'react-native'
 
 class ItemsWithSeparator extends React.Component {
   props: {

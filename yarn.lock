@@ -2799,10 +2799,6 @@ istextorbinary@^1.0.2:
     binaryextensions "~1.0.0"
     textextensions "~1.0.0"
 
-itypeof@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/itypeof/-/itypeof-1.1.2.tgz#6fb22639dc78a414f594b3d553a5f2c2488fd022"
-
 jest-changed-files@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-17.0.2.tgz#f5657758736996f590a51b87e5c9369d904ba7b7"
@@ -4057,23 +4053,9 @@ react-native-easy-grid@0.1.7:
   dependencies:
     lodash "^4.11.1"
 
-react-native-facebook-login@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-facebook-login/-/react-native-facebook-login-1.4.0.tgz#b9ec7b05bd9666d7d697d1ecc71a4c82c77f86c9"
-  dependencies:
-    itypeof "^1.1.2"
-
-react-native-firebase-auth@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/react-native-firebase-auth/-/react-native-firebase-auth-0.0.11.tgz#997457f01efe192a101a19acffb9ce18c08becd1"
-
 react-native-google-signin@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-0.8.1.tgz#7b3c6898aadb2ceb964ebe725a2e85be223ef636"
-
-react-native-htmlview@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-htmlview/-/react-native-htmlview-0.5.0.tgz#1f5fa3396259c1ae031804bf2589f6311e54c0a7"
 
 react-native-keyboard-aware-scroll-view@0.2.0:
   version "0.2.0"
@@ -4084,10 +4066,6 @@ react-native-keyboard-aware-scroll-view@0.2.0:
 react-native-linear-gradient@^1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-1.6.2.tgz#1ea3e7a186b514661b927673aa9c427dd520999f"
-
-react-native-modalbox@^1.3.8:
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/react-native-modalbox/-/react-native-modalbox-1.3.8.tgz#dc83bf90ded653288842a21153b5fca1af82e355"
 
 react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
@@ -4349,10 +4327,6 @@ redux-persist@^4.0.0:
     json-stringify-safe "^5.0.1"
     lodash "^4.11.1"
     lodash-es "^4.16.0"
-
-redux-promise-reducer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/redux-promise-reducer/-/redux-promise-reducer-1.0.1.tgz#f5797a3c76d7f72fe389e0c53fb53e70f9dcbcf7"
 
 redux-thunk@^2.1.0:
   version "2.1.0"

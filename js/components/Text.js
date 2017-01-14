@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactNative, {StyleSheet, Dimensions} from 'react-native';
-import Colors from './Colors';
+import React from 'react'
+import ReactNative, {StyleSheet, Dimensions} from 'react-native'
+import Colors from './Colors'
 
 export function Text({style, ...props}: Object): ReactElement {
   return <ReactNative.Text style={[styles.font, style]} {...props} />;

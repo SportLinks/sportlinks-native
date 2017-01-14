@@ -1,12 +1,6 @@
-var Colors = require('./Colors');
-var React = require('React');
-var Platform = require('Platform');
-var StyleSheet = require('StyleSheet');
-var { Text } = require('Text');
-var TouchableOpacity = require('TouchableOpacity');
-var View = require('View');
-var Image = require('Image');
-var ToolbarAndroid = require('ToolbarAndroid');
+import Colors from './Colors'
+import React from 'react'
+import { Platform, StyleSheet, Text, TouchableOpacity, View, Image, ToolbarAndroid } from 'react-native'
 
 export type Layout =
     'default'      // Use platform defaults (icon on Android, text on iOS)

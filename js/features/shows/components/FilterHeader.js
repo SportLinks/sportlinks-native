@@ -1,10 +1,6 @@
-var React = require('React');
-var StyleSheet = require('StyleSheet');
-const Text = require('Text');
-const TouchableOpacity = require('TouchableOpacity');
-const View = require('View');
-const Image = require('Image');
-const { connect } = require('react-redux');
+import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import { connect } from 'react-redux'
 import { applySportsFilter } from '../reducers/shows'
 
 class FilterHeader extends React.Component {

@@ -16,54 +16,65 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      anim: new Animated.Value(0),
-    }
+    this.animButton = new Animated.Value(0)
+    this.initSquaresOverlay()
+  }
+
+  initSquaresOverlay() {
     this.squareSize = 80
     this.squarePadding = 4
     this.squares = Math.round(this.props.height*this.props.width / Math.pow(this.squareSize+this.squarePadding, 2))
-    this.arr = []
-    for (var i = 0; i < this.squares; i++) {
-      this.arr.push(i)
-    }
     this.animatedValue = []
-    this.arr.forEach((value) => {
-      this.animatedValue[value] = new Animated.Value(1)
-    })
+    for (var i = 0; i < this.squares; i++) {
+      this.animatedValue.push(new Animated.Value(1))
+    }
   }
 
   componentDidMount() {
-    Animated.timing(this.state.anim,
+    this.animateButton()
+    this.animateSquaresOverlay()
+  }
+
+  animateButton() {
+    Animated.timing(this.animButton,
       {
         toValue: 1,
         duration: 1500,
         easing: Easing.elastic(3)
       }
     ).start()
-    this.animate()
   }
 
-  animate() {
-    const animations = this.arr.map((item) => {
+  animateSquaresOverlay() {
+    const animations = this.animatedValue.map((item) => {
       return Animated.timing(
-        this.animatedValue[item],
+        item,
         {
           toValue: 0,
           duration: 1500
         }
       )
     })
-    Animated.stagger(10, animations).start()
+    Animated.stagger(25, animations).start()
   }
 
   render() {
-    var paddingTop = this.state.anim.interpolate({
+    var paddingTop = this.animButton.interpolate({
       inputRange: [0, 1],
       outputRange: [-150, 150],
     })
 
-    const animations = this.arr.map((a, i) => {
-      return <Animated.View key={i} style={{zIndex: 1, opacity: this.animatedValue[a], height: this.squareSize, width: this.squareSize, backgroundColor: colorForTopic(this.squares, i), margin: this.squarePadding}} />
+    const animations = this.animatedValue.map((value, index) => {
+      return <Animated.View key={index}
+        style={{
+          zIndex: 1,
+          opacity: value,
+          height: this.squareSize,
+          width: this.squareSize,
+          backgroundColor: colorForTopic(this.squares, index),
+          margin: this.squarePadding
+        }}
+      />
     })
 
     return (

@@ -32,6 +32,14 @@ class ShowsList extends Component {
         return <Icon name="ios-american-football" style={[styles.litleSportIcon, {color: '#683700'}]}  />
       case 'MMA':
         return <Icon name="ios-body" style={styles.litleSportIcon} />
+      case 'CYCLING':
+        return <Icon name="ios-bicycle" style={styles.litleSportIcon} />
+      case 'FORMULA1':
+        return <Icon name="ios-car" style={styles.litleSportIcon} />
+      case 'MOTOGP':
+        return <IconMD name="motorcycle" style={styles.litleSportIcon} />
+      case 'BOXING':
+        return <IconMD name="group" style={styles.litleSportIcon} />
       default:
         return <Icon name="ios-videocam" style={styles.litleSportIcon} />
     }

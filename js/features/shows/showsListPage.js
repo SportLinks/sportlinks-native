@@ -40,6 +40,7 @@ class ShowsList extends Component {
   dateToISO(date) {
     let year = date.substring(6, date.length)
     let month = date.substring(3, 5)
+    if (month > 12) month = '02'
     let day = date.substring(0,2)
     return year + '-' + month + '-' + day
   }

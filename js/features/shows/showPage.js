@@ -56,18 +56,20 @@ class ShowDetail extends Component {
                 </CardItem>
               {
                 this.props.show.channels.map((channel, index) => {
-                  return (
-                  <CardItem key={index} onPress={this.openUrl(channel.url)}>
-                    <View style={{paddingTop: 10, flexDirection: 'row'}}>
-                      <IconMD name="local-play" size={30} color="#c41919" style={{paddingTop: -5}}/>
-                      <View style={{paddingLeft: 10}}>
-                        <Text style={{color: '#37373a', fontWeight: 'bold'}}>
-                          Link {index + 1} ({channel.language})
-                        </Text>
-                      </View>
-                    </View>
-                  </CardItem>
-                  )
+                  if (channel.url !== '') {
+                    return (
+                      <CardItem key={index} onPress={this.openUrl(channel.url)}>
+                        <View style={{paddingTop: 10, flexDirection: 'row'}}>
+                          <IconMD name="local-play" size={30} color="#c41919" style={{paddingTop: -5}}/>
+                          <View style={{paddingLeft: 10}}>
+                            <Text style={{color: '#37373a', fontWeight: 'bold'}}>
+                              Link {index + 1} ({channel.language})
+                            </Text>
+                          </View>
+                        </View>
+                      </CardItem>
+                    )
+                  }
                 })
               }
               </Card>

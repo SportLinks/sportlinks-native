@@ -12,7 +12,7 @@ export default function configureStore() {
     predicate: (getState, action) => isDebuggingInChrome,
     collapsed: true,
     duration: true,
-    stateTransformer: state => state
+    stateTransformer: state => JSON.stringify(state)
   })
 
   const enhancer = compose(

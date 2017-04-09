@@ -4,6 +4,10 @@ const SPORTS_COLORS = {
   'TENNIS': '#f2ff66',
   'FOOTBALL': '#683700',
   'MMA': 'black',
+  'CYCLING': 'black',
+  'FORMULA1': 'black',
+  'MOTOGP': 'black',
+  'BOXING': 'black'
 };
 
 function colorForSport(sport: ?string): string {

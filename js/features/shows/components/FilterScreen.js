@@ -43,11 +43,11 @@ class FilterScreen extends React.Component {
       inputRange: [0, 1],
       outputRange: [-100, 0],
     });
-    var sports = this.props.sports.map((sport, ii) => (
+    var sports = this.props.sports.map((sport, ii, sports) => (
       <SportItem
         key={sport}
         sport={sport}
-        color={Colors.colorForSport(sport)}
+        color={Colors.colorForTopic(sports.length, ii)}
         isChecked={this.state.selectedSports[sport]}
         onToggle={this.toggleSport.bind(this, sport)}
       />
@@ -139,7 +139,7 @@ var styles = StyleSheet.create({
 
 function select(store) {
   return {
-    sports: ['Soccer', 'Basketball', 'Tennis', 'Football', 'MMA'],
+    sports: ['Soccer', 'Basketball', 'Tennis', 'Football', 'MMA', 'Cycling', 'Formula1', 'MotoGP', 'Boxing'],
     selectedSports: store.shows.filter,
   };
 }
